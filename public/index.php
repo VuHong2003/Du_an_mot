@@ -1,5 +1,8 @@
 <?php
+session_start();
+require_once '../controllers/admin/CategoryController.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+$categoryAdmin = new CategoryController();
 switch ($action) {
     // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
@@ -15,13 +18,17 @@ switch ($action) {
         include '../views/admin/product/edit.php';
         break;
     case 'category':
-        include '../views/admin/category/list.php';
+        $categoryAdmin->index();
+        // include '../views/admin/category/list.php';
         break;
     case 'category-create':
-        include '../views/admin/category/create.php';
+        $categoryAdmin->addCategory();
         break;
     case 'category-edit':
-        include '../views/admin/category/edit.php';
+        $categoryAdmin->updateCategory();
+        break;
+    case 'category-delete':
+        $categoryAdmin->deleteCategory($_GET['id']);
         break;
     // ======================== CLIENT ===========================
 
