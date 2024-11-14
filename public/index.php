@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../controllers/admin/CategoryController.php';
-$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+$action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 switch ($action) {
     // http://localhost/Du_an_mot/public/?act=admin

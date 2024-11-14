@@ -49,7 +49,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="?act=client" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -379,11 +379,14 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-header">DỊCH VỤ</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
+                <!-- <i class="nav-icon fas fa-edit"></i>
+                <i class="nav-icon fas fa-edit"></i> -->
+                <i class="nav-icon fa-solid fa-cart-shopping"></i>
                 <p>
-                  Danh mục
+                  Sản phẩm
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -391,13 +394,13 @@
                 <li class="nav-item">
                   <a href="index.php?act=category" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>List</p>
+                    <p>Danh mục</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?act=category-edit" class="nav-link">
+                  <a href="index.php?act=product" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Edit</p>
+                    <p>Tất cả sản phẩm</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -437,12 +440,13 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-header">EXAMPLES</li>
+            <li class="nav-header">QUẢN LÝ</li>
             <li class="nav-item">
               <a href="admin/assets/pages/calendar.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
+                <i class="nav-icon fa-solid fa-user"></i>
                 <p>
-                  Calendar
+                  Thành viên
                   <span class="badge badge-info right">2</span>
                 </p>
               </a>
