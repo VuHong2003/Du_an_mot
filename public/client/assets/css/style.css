@@ -28,7 +28,7 @@
 
 .hr {
     height: 1px; /* Độ dày của đường kẻ */
-    background-color: #dedede; /* Màu sắc */
+    background-color: #9b9999; /* Màu sắc */
     border: none; /* Xóa viền mặc định */
 }
 
@@ -104,6 +104,7 @@ body {
 
 .btn_category {
     display: flex;
+    align-items: center;
     gap: 10px;
     font-family: "Roboto", sans-serif;
     font-size: 15px;
@@ -207,7 +208,7 @@ body {
 
 .footer {
     background-color: #1f1f39;
-    height: 340px;
+    height: 370px;
     font-family: "Roboto", sans-serif;
 }
 .container_footer {
@@ -242,7 +243,7 @@ body {
 }
 
 
-.col-12 {
+.border_footer {
     width: 100%;
     line-height: 32px;
   }
@@ -291,7 +292,7 @@ body {
     font-weight: 400;
     font-family: "Saira Semi Condensed", sans-serif;
 }
-.search_footer button {
+.footer .search_footer .btn_subscribe {
     background-color: #01be5f;
     border: none;
     border-radius: 20px;
@@ -300,6 +301,8 @@ body {
     margin-right: 2px;
     color: white;
     font-weight: 600;
+    justify-content: center;
+    font-size: 13px;
 }
 
 .w-col-12{
@@ -334,7 +337,7 @@ h4{
 }
 .whr{
     height: 1px; /* Độ dày của đường kẻ */
-    background-color: #9292922a; /* Màu sắc */
+    background-color: #c5c1c1f7; /* Màu sắc */
     border: none; /* Xóa viền mặc định */
 }
 .end_foot{
