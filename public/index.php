@@ -4,7 +4,7 @@ require_once '../controllers/admin/CategoryController.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 switch ($action) {
-    // http://localhost/Du_an_mot/public/?act=admin
+        // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
         include '../views/admin/index.php';
         break;
@@ -30,14 +30,16 @@ switch ($action) {
     case 'category-delete':
         $categoryAdmin->deleteCategory($_GET['id']);
         break;
-    // ======================== CLIENT ===========================
+        // ======================== CLIENT ===========================
 
-    // http://localhost/Du_an_mot/public/?act=client
+        // http://localhost/Du_an_mot/public/?act=client
     case 'client':
         include '../views/client/index.php';
         break;
-
-    // ======================== AUTH ===========================
+    case 'product-detail':
+        include '../views/client/product-detail.php';
+        break;
+        // ======================== AUTH ===========================
     case 'register':
         include '../views/client/auth/register.php';
         break;
