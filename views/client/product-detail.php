@@ -8,13 +8,13 @@
     <div class="product-page">
         <div class="page">
             <div class="product-images">
-                <img src="img/01.jpg" alt="Main Product" class="main-image" />
+                <img src="../public/images/product-detail/01.jpg" alt="Main Product" class="main-image" />
                 <div class="thumbnails">
-                    <img src="img/01.jpg" alt="img" />
-                    <img src="img/01.jpg" alt="img" />
+                    <img src="../public/images/product-detail/01.jpg" alt="" />
+                    <img src="../public/images/product-detail/01.jpg" alt="" />
+                    <img src="../public/images/product-detail/01.jpg" alt="" />
+                    <img src="../public/images/product-detail/01.jpg" alt="" />
 
-                    <img src="img/01.jpg" alt="img" />
-                    <img src="img/01.jpg" alt="img" />
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
             <div class="review-header-info">
                 <div class="infos">
                     <div class="img-name-date">
-                        <img src="img/tải xuống.jpg" alt="User Image" />
+                        <img src="../public/images/product-detail/Avatar.jpg" alt="User Image" />
                         <div>
                             <div class="author-name">Tran thi</div>
                             <div class="review-date">June 02, 2020</div>
@@ -130,7 +130,7 @@
                     <hr />
                     <div class="review-header-info">
                         <div class="img-name-date">
-                            <img src="img/tải xuống.jpg" alt="User Image" />
+                            <img src="../public/images/product-detail/Avatar.jpg" alt="User Image" />
                             <div>
                                 <div class="author-name">Thi tran</div>
                                 <div class="review-date">Author - June 02, 2020</div>
@@ -151,7 +151,7 @@
                     <hr />
                     <div class="review-header-info">
                         <div class="img-name-date">
-                            <img src="img/tải xuống.jpg" alt="User Image" />
+                            <img src="../public/images/product-detail/Avatar.jpg" alt="User Image" />
                             <div>
                                 <div class="author-name">Thi Dinh</div>
                                 <div class="review-date">Author - June 02, 2020</div>
@@ -174,7 +174,7 @@
             <div class="review-header-info">
                 <div class="infos">
                     <div class="img-name-date">
-                        <img src="img/tải xuống.jpg" alt="User Image" />
+                        <img src="../public/images/product-detail/Avatar.jpg" alt="User Image" />
                         <div>
                             <div class="author-name">Tran thi</div>
                             <div class="review-date">June 02, 2020</div>
@@ -244,12 +244,12 @@
     </div>
     <section class="inner-section">
         <div class="col">
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct1.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
@@ -257,84 +257,84 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct9.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct3.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct4.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct5.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct6.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct7.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
                     <button class="add-button">Add</button>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-vv">
                 <div class="product-card">
                     <span class="favorite-icon">
                         <i class="fa-regular fa-heart" style="color: red"></i>
                     </span>
-                    <img src="img/01.jpg" alt="Watermelon" />
+                    <img src="../public/images/product-detail/ct8.jpg" alt="Watermelon" />
                     <h5 class="product-title">Watermelon Medium 4kg +</h5>
                     <div class="product-unit">Piece</div>
                     <div class="product-price">$120.00</div>
