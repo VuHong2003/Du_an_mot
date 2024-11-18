@@ -45,7 +45,7 @@
                         <ul>
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>House:25, Road:05, Block:A,  Dhaka.</span>
+                                <span>House:25, Road:05, Block:A, Dhaka.</span>
                             </li>
                             <li>
                                 <i class="fa-solid fa-envelope"></i>

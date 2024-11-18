@@ -1,5 +1,5 @@
 <?php
-$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+$action = isset($_GET['act']) ? $_GET['act'] : 'client';
 switch ($action) {
     // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
@@ -31,10 +31,10 @@ switch ($action) {
         break;
 
     // ======================== AUTH ===========================
-    case 'register':
-        include '../views/client/auth/register.php';
-        break;
     case 'login':
         include '../views/client/auth/login.php';
+        break;
+    case 'register':
+        include '../views/client/auth/register.php';
         break;
 }
