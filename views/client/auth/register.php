@@ -1,4 +1,4 @@
-<?php require_once '../../../views/client/layout/header.php' ?><br/>
+<?php include '../views/client/layout/header.php'; ?>
 <link rel="stylesheet" href="../../../public/client/assets/css/style.css">
 <link rel="stylesheet" href="../../../public/client/assets/css/register.css">
  <body>
@@ -25,10 +25,10 @@
                     <input type="password" class="input" id="confirm-password" required>
                     <button type="submit" class="signup-button">Sign Up</button>
                 </form>
-                <p class="signin-link">Already have an account? <a href="login.php">Sign In</a></p>
+                <p class="signin-link">Already have an account? <a href="?act=login">Sign In</a></p>
             </div>
         </div>
         </div>
     </div>
 </body>
-<?php  require_once '../../../views/client/layout/footer.php'?>
+<?php include '../views/client/layout/footer.php'; ?>
