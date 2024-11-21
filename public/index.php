@@ -39,6 +39,9 @@ switch ($action) {
     case 'product-detail':
         include '../views/client/product-detail.php';
         break;
+    case 'products':
+        include '../views/client/products.php';
+        break;
         // ======================== AUTH ===========================
     case 'register':
         include '../views/client/auth/register.php';

@@ -133,22 +133,40 @@ h1 {
   display: flex;
   margin-bottom: 15px;
 }
+.icofont-facebook:hover .fa-brands {
+  border-color: green;
+  color: green;
+}
+.icofont-twitter:hover .fa-brands {
+  border-color: green;
+  color: green;
+}
+.icofont-linkedin:hover .fa-brands {
+  border-color: green;
+  color: green;
+}
+.icofont-instagram:hover .fa-brands {
+  border-color: green;
+  color: green;
+}
 
 .details-share-list {
   display: flex;
   margin-left: 0px;
+  list-style: none;
 }
 
 .fa-brands {
   justify-content: center;
   width: 25px;
   height: 23px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   padding-top: 5px;
   color: #565765;
-  background-color: #f5f6f7;
+  /* background-color: #f5f6f7; */
 }
+
 .share a img {
   width: 20px;
   margin-left: 10px;
@@ -203,8 +221,14 @@ button {
   background-color: #ddd;
   color: #555;
   height: 40px;
+  font-weight: 500;
 }
-
+.add-to-wish:hover {
+  color: green;
+}
+.compares:hover {
+  color: green;
+}
 .group_items .box_favourite {
   align-items: center;
 }
@@ -371,7 +395,7 @@ hr {
 }
 .col-lg-12 .btn {
   width: 1080px;
-  height: 40px;
+
   background-color: #119744;
   color: white;
 }
@@ -468,8 +492,13 @@ hr {
   color: #119744;
   background-color: white;
 }
+
 .btn {
   border-radius: 6px;
   border: 2px solid #119744;
   padding: 10px 37px;
+}
+.btn:hover {
+  background-color: green;
+  color: white;
 }
