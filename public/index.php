@@ -43,10 +43,15 @@ switch ($action) {
         include '../views/client/products.php';
         break;
         // ======================== AUTH ===========================
+
     case 'register':
         include '../views/client/auth/register.php';
         break;
     case 'login':
         include '../views/client/auth/login.php';
+        break;
+    // ======================== USER ===========================
+    case 'dashboard';
+        include '../views/client/user/dashboard.php';
         break;
 }
