@@ -36,6 +36,9 @@ switch ($action) {
     case 'client':
         include '../views/client/index.php';
         break;
+    case 'products':
+        include '../views/client/products.php';
+        break;
 
     // ======================== AUTH ===========================
     case 'register':
@@ -43,5 +46,9 @@ switch ($action) {
         break;
     case 'login':
         include '../views/client/auth/login.php';
+        break;
+    // ======================== USER ===========================
+    case 'dashboard';
+        include '../views/client/user/dashboard.php';
         break;
 }

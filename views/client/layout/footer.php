@@ -68,3 +68,25 @@
         </div>
     </div>
 </footer>
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("accountDropdown");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    // Close the dropdown if clicked outside
+    window.onclick = function(event) {
+        const dropdown = document.getElementById("accountDropdown");
+        if (!event.target.closest(".account")) {
+            dropdown.style.display = "none";
+        }
+    };
+   
+    function toggleNavbar() {
+        const navbar = document.querySelector(".list_nav");
+        navbar.classList.toggle("active");
+
+    }
+   
+
+</script>

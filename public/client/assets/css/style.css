@@ -9,6 +9,8 @@
 :root {
     --main-color: #0ac065;
     --white: #ffffff;
+    --black: #000000;
+    --blue--green: #1cd7cb;
 }
 
 .capitalize {
@@ -19,6 +21,10 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
+}
+
+.paper_group p {
+    all: unset;
 }
 
 .a_none:hover {
@@ -32,11 +38,16 @@
     border: none; /* Xóa viền mặc định */
 }
 
+
+
 body {
     font-family: "Saira Semi Condensed", sans-serif;
+
 }
 
 /* ========================== HEADER ========================== */
+
+
 
 .header .top_header {
     width: 1120px;
@@ -201,10 +212,129 @@ body {
     height: 85px;
 }
 
+.category_group {
+    position: relative;
+}
+
+/* .btn_category {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+} */
+
 .list_nav {
+    display: none; /* Ẩn mặc định */
+    position: absolute;
+    top: 100%; /* Xuất hiện ngay bên dưới nút */
+    left: 0;
+    width: 200px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.list_nav.active {
+    display: block; /* Hiển thị khi có class "active" */
+}
+
+.category_item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}
+
+.category_item:hover {
+    background-color: #f5f5f5;
+}
+
+.category_menu {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.account {
+    position: relative;
+}
+
+.account-dropdown {
     display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 550;
+}
+
+
+.or-text {
+    display: block;
+    color: #888;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.group_items .account .register {
+    color: #2ac769;
+    background-color: #e2ffee;
+    border-radius: 40px;
+}
+
+.group_items .account .login {
+    background-color: #f4f4f5;
+    border-radius: 40px;
+}
+
+.group_items .account .login:hover {
+    color: var(--white);
+    background-color: var(--black);
+    transition: all 0.5s;
+}
+
+.group_items .account .register:hover {
+    background-color: #2ac769;
+    color: white;
+    transition: all 0.5s;
 }
 /* ========================== FOOTER ========================== */
+
+
 
 .footer {
     background-color: #1f1f39;
