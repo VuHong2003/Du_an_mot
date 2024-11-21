@@ -1,19 +1,19 @@
 <?php
-    class connect {
+    class Connect {
         public function connect(): PDO {
-            $severName = 'location';
+            $serverName = 'localhost';
             $userName = 'root';
-            $passWord = '';
+            $password = '';
             $myDB = 'ebazaar';
-            try{
-                $conn = new PDO("mysql:host=$severName;dbName=$myDB,userName: $userName,password: $passWord");
-                $conn->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
+            try {
+                // Corrected the DSN (Data Source Name) and parameter formatting
+                $conn = new PDO("mysql:host=$serverName;dbname=$myDB", $userName, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 return $conn;
-            }catch (Throwable $th){
-                echo 'Ket noi that bai'.$th -> getMessage();
+            } catch (Throwable $th) {
+                echo 'Kết nối thất bại: ' . $th->getMessage();
                 return null;    
             }
         }
     }
-    
 ?>

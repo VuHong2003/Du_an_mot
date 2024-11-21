@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="admin/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
@@ -48,7 +49,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="?act=client" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -215,40 +216,11 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="./index.html" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v1</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="./index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
             <li class="nav-item">
               <a href="index.php?act=admin" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  Dashboard
+                    Dashboard
                   <span class="right badge badge-danger">Hot</span>
                 </p>
               </a>
@@ -407,11 +379,14 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-header">DỊCH VỤ</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
+                <!-- <i class="nav-icon fas fa-edit"></i>
+                <i class="nav-icon fas fa-edit"></i> -->
+                <i class="nav-icon fa-solid fa-cart-shopping"></i>
                 <p>
-                  Category
+                  Sản phẩm
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -419,13 +394,13 @@
                 <li class="nav-item">
                   <a href="index.php?act=category" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>List</p>
+                    <p>Danh mục</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?act=category-edit" class="nav-link">
+                  <a href="index.php?act=product" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Edit</p>
+                    <p>Tất cả sản phẩm</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -440,7 +415,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Products
+                  Sản phẩm
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
@@ -465,12 +440,13 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-header">EXAMPLES</li>
+            <li class="nav-header">QUẢN LÝ</li>
             <li class="nav-item">
               <a href="admin/assets/pages/calendar.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
+                <i class="nav-icon fa-solid fa-user"></i>
                 <p>
-                  Calendar
+                  Thành viên
                   <span class="badge badge-info right">2</span>
                 </p>
               </a>
