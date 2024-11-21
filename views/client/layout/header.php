@@ -1,25 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="../../../public/client/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="client/assets/css/style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
     <title>Trang chủ</title>
+
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         <div class="top_header">
             <div class="logo">
                 <a href="" class="logo a_none">
-                    <img src="../../../public/client/assets/images/logo header.png" alt="" />
+                    <img src="../public/images/logo/dark.png" alt="" />
                 </a>
             </div>
             <div class="box_search">
@@ -39,7 +40,7 @@
             <div class="group_items">
                 <div class="paper_group">
                     <button>
-                        <img src="../../../public/client/assets/images/cotoquoc.webp" alt="" class="language ">
+                        <img src="../public/images/languages/vi.svg" alt="" class="language" />
                         <span class="capitalize">Vietnam</span>
                         <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                     </button>
@@ -49,11 +50,17 @@
                     </a>
 
                     <div class="account">
-                        <button class="box_favourite">
+                        <button class="box_favourite" onclick="toggleDropdown()">
                             <div class="favourite"><i class="fa-regular fa-user" style="color: #ffffff;"></i></div>
-                            <span class="capitalize">tài khoản</span>
+                            <p><span class="capitalize">Account</span></p>
                             <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                         </button>
+                        <!-- Dropdown menu -->
+                        <div class="account-dropdown" id="accountDropdown">
+                            <a href="?act=register" class="dropdown-item register">Register your account</a>
+                            <span class="or-text">OR</span>
+                            <a href="?act=login" class="dropdown-item login">Login to your account</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,16 +70,16 @@
             <div class="items flex center">
                 <div class="item_left flex">
                     <div class="category_group">
-                        <button class="btn btn_category">
+                        <button class="btn_category" onclick="toggleNavbar()">
                             <i class="fa-solid fa-bars"></i>
                             <span class="capitalize">Browse Category</span>
                             <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                         </button>
-                        <ul class="list_nav">
+                        <ul class="list_nav" id="listNav">
                             <li class="category_item">
                                 <button class="category_menu">
-                                    <span>vegetable</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
+                                    <span class="capitalize">vegetable</span>
+                                    <!-- <i class="fa-solid fa-chevron-right"></i> -->
                                 </button>
                             </li>
                             <li class="category_item">
@@ -117,3 +124,6 @@
             </div>
         </div>
     </header>
+</body>
+
+</html>
