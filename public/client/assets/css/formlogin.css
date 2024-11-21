@@ -1,13 +1,4 @@
-/* Reset styles */
 
-
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f5f5f5;
-} */
 .login .center {
     width: 1120px;
     display: flex;
@@ -17,10 +8,6 @@
 }
 .login-container {
     display: flex;
-    /* justify-content: center; */
-    /* width: 700px; */
-    /* height: 600px; */
-   
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -31,25 +18,12 @@
     display: flex;
     width: 300px;
     height: 500px;
-    /* width: 100%;
-    object-fit: cover; */
- 
 }
 
 .login  .image-section img {
     width: 100%;
-   
-    /* object-fit: cover; */
 }
 
-/* .logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    color: #007e4f;
-    font-weight: bold;
-} */
 
 .login  .form-section {
     width: 50%;
@@ -71,10 +45,6 @@
     margin-bottom: 20px;
 }
 
-/* form {
-    display: flex;
-    flex-direction: column;
-} */
 .sig-in{
     text-align: center;
 }
