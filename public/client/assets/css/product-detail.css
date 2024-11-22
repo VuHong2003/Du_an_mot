@@ -160,11 +160,9 @@ h1 {
   justify-content: center;
   width: 25px;
   height: 23px;
-  /* border-radius: 10px; */
   text-align: center;
   padding-top: 5px;
   color: #565765;
-  /* background-color: #f5f6f7; */
 }
 
 .share a img {
@@ -173,14 +171,12 @@ h1 {
 }
 
 .actions {
-  /* display: flex; */
   gap: 10px;
 }
 .actions button {
   display: flex;
 }
 button {
-  /* padding: 10px 20px; */
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -189,7 +185,6 @@ button {
 }
 
 .add-to-cart {
-  /* width: 600px; */
   text-align: center;
 }
 .carts {
