@@ -1,21 +1,29 @@
 <?php
 session_start();
 require_once '../controllers/admin/CategoryController.php';
-$action = isset($_GET['act']) ? $_GET['act'] : 'client';
+require_once '../controllers/admin/ProductController.php';
+$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
 $categoryAdmin = new CategoryController();
+$productAdmin = new ProductController();
 switch ($action) {
     // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
         include '../views/admin/index.php';
         break;
     case 'product':
-        include '../views/admin/product/list.php';
+        $productAdmin->index();
         break;
     case 'product-create':
-        include '../views/admin/product/create.php';
+        $productAdmin->create();
+        break;
+    case 'product-store':
+        $productAdmin->store();
         break;
     case 'product-edit':
-        include '../views/admin/product/edit.php';
+        $productAdmin->edit();
+        break;
+    case 'product-update':
+        $productAdmin->update();
         break;
     case 'category':
         $categoryAdmin->index();
