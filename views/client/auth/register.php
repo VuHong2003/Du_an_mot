@@ -1,6 +1,5 @@
 <?php include '../views/client/layout/header.php'; ?>
-<link rel="stylesheet" href="../../../public/client/assets/css/style.css">
-<link rel="stylesheet" href="../../../public/client/assets/css/register.css">
+
  <body>
  <div class="container-register">
  <div class="center">
