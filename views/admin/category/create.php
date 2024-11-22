@@ -82,8 +82,8 @@
           <!-- /.card -->
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
+      <div class="row" >
+        <div class="col-12" style="margin-bottom: 20px">
           <a href="?act=category" class="btn btn-secondary">Trở về</a>
           <input type="submit" name="createCategory" value="Thêm mới" class="btn btn-success float-right">
         </div>

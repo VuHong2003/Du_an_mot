@@ -4,7 +4,7 @@
         <div class="row_footer">
             <div class="col-12 w-col-12">
                 <div class="box_search_footer">
-                    <a href=""><img src="./assets/image/logo_dark.png" alt="" /></a>
+                    <a href=""><img src="../public/images/logo/logo.png" alt="" /></a>
                     <form action="">
                         <label for="">Subscribe to our newsletter</label>
                         <div class="search_footer">
