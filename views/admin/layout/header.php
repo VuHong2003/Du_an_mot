@@ -31,9 +31,34 @@
   <link rel="stylesheet" href="admin/assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="admin/assets/plugins/summernote/summernote-bs4.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Thông báo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
+  <?php
+  if (isset($_SESSION['error'])) {
+    echo "<script>
+        toastr.warning('{$_SESSION['error']}');
+      </script>";
+    unset($_SESSION['error']);
+  }
+  if (isset($_SESSION['success'])) {
+    echo "<script>
+        toastr.success('{$_SESSION['success']}');
+      </script>";
+    unset($_SESSION['success']);
+  }
+  ?>
   <div class="wrapper">
 
     <!-- Preloader -->
@@ -220,7 +245,7 @@
               <a href="index.php?act=admin" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                    Dashboard
+                  Dashboard
                   <span class="right badge badge-danger">Hot</span>
                 </p>
               </a>

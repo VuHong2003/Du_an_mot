@@ -1,30 +1,30 @@
 <?php include '../views/admin/layout/header.php'; ?>
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Project Edit</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Project Edit</li>
-            </ol>
-          </div>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Sản phẩm</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Project Edit</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-    <!-- Main content -->
-    <section class="content">
+  <!-- Main content -->
+  <section class="content">
+    <form action="?act=product-update&id=<?= $product['product_id'] ?>" method="post" enctype="multipart/form-data">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
-
+              <h3 class="card-title">Thêm sản phẩm</h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                   <i class="fas fa-minus"></i>
@@ -32,146 +32,246 @@
               </div>
             </div>
             <div class="card-body">
+
+              <!-- Tên sản phẩm -->
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control" value="AdminLTE">
+                <label for="inputName">Tên sản phẩm</label>
+                <input type="text" name="product_name" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" value="<?= $product['product_name'] ?>">
+                <input hidden type="text" name="catrgories_id" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" value="<?= isset($_POST['product_name']) ? $_POST['product_name'] : '' ?>">
               </div>
+              <?php if (isset($_SESSION['errors']['name'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
+              <?php endif; ?>
+
+              <!-- Danh mục -->
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</textarea>
-              </div>
-              <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option selected>Success</option>
+                <label for="inputStatus">Danh mục</label>
+                <select id="inputStatus" name="catrgories_id" class="form-control custom-select">
+                  <?php foreach ($listCategories as $value) : ?>
+                    <option value="<?= $value['id'] ?>"
+                      <?= $product['category_id'] == $value['id'] ? 'select' :  '' ?>><?= $value['name'] ?></option>
+                  <?php endforeach ?>
                 </select>
               </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control" value="Tony Chicken">
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <div class="col-md-6">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">Budget</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Estimated budget</label>
-                <input type="number" id="inputEstimatedBudget" class="form-control" value="2300" step="1">
-              </div>
-              <div class="form-group">
-                <label for="inputSpentBudget">Total amount spent</label>
-                <input type="number" id="inputSpentBudget" class="form-control" value="2000" step="1">
-              </div>
-              <div class="form-group">
-                <label for="inputEstimatedDuration">Estimated project duration</label>
-                <input type="number" id="inputEstimatedDuration" class="form-control" value="20" step="0.1">
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">Files</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
+              <!-- Hàng 1: Giá sản phẩm và Giá khuyến mãi -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="inputPrice">Giá sản phẩm</label>
+                    <input type="text" name="prices" id="inputPrice" class="form-control" placeholder="Nhập giá sản phẩm" value="<?= $product['product_price'] ?>">
+                  </div>
+                  <?php if (isset($_SESSION['errors']['prices'])) : ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['prices'] ?></p>
+                  <?php endif; ?>
+                </div>
+                <!-- Giá khuyến mãi  -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="inputDiscountPrice">Giá khuyến mãi</label>
+                    <input type="text" name="sale" id="inputDiscountPrice" class="form-control" placeholder="Nhập giá khuyến mãi" value="<?= $product['product_sale_price'] ?>">
+                  </div>
+                  <?php if (isset($_SESSION['errors']['sale'])) : ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['sale'] ?></p>
+                  <?php endif; ?>
+                </div>
               </div>
-            </div>
-            <div class="card-body p-0">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>File Name</th>
-                    <th>File Size</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
+              <!-- Giá nhập sản phẩm -->
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="inputPrice">Giá nhập sản phẩm</label>
+                    <input type="text" name="cost_price" id="inputName" class="form-control" placeholder="Nhập cost sản phẩm" value="<?= $product['product_cost_price'] ?>">
+                  </div>
+                  <?php if (isset($_SESSION['errors']['cost_price'])) : ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['cost_price'] ?></p>
+                  <?php endif; ?>
+                </div>
+                <!-- View sản phẩm -->
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="inputDiscountPrice">View</label>
+                    <input type="text" name="view_count" id="inputName" class="form-control" placeholder="Nhập cost sản phẩm" value="<?= $product['product_view_count'] ?>">
+                  </div>
+                  <?php if (isset($_SESSION['errors']['view_count'])) : ?>
+                    <p class="text-danger"><?= $_SESSION['errors']['view_count'] ?></p>
+                  <?php endif; ?>
+                </div>
+              </div>
+              <!-- Biến thể -->
 
-                  <tr>
-                    <td>Functional-requirements.docx</td>
-                    <td>49.8005 kb</td>
-                    <td class="text-right py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
-                  <tr>
-                    <td>UAT.pdf</td>
-                    <td>28.4883 kb</td>
-                    <td class="text-right py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
-                  <tr>
-                    <td>Email-from-flatbal.mln</td>
-                    <td>57.9003 kb</td>
-                    <td class="text-right py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
-                  <tr>
-                    <td>Logo.png</td>
-                    <td>50.5190 kb</td>
-                    <td class="text-right py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
-                  <tr>
-                    <td>Contract-10_12_2014.docx</td>
-                    <td>44.9715 kb</td>
-                    <td class="text-right py-0 align-middle">
-                      <div class="btn-group btn-group-sm">
-                        <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                      </div>
-                    </td>
+              <!-- Giá biến thể -->
+              <div id="variants">
+                <?php foreach ($variants as $key => $value) : ?>
+                  <div class="row mb-4">
+                    <div class="col-lg-4">
+                      <input type="hidden" name="product_id[]" value="<?= $value['product_id']?>">
+                      <div class="mt-3 ">
+                        <label for="inputDiscountPrice">Weight</label>
+                        <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                          <?php foreach ($listWeight as $weight) : ?>
+                            <input type="checkbox" class="btn-check"
+                              value="<?= $weight['id'] ?>" <?= $value['variant_weight_id'] == $weight['id'] ? 'checked' : '' ?>
+                              id="weight-<?= $weight['id'] ?>-<?= $key ?>"
+                              name="variant_weight[]">
+                            <label for="weight-<?= $weight['id'] ?>-<?= $key ?>" class="btn btn-secondary avatar-sm rounded d-flex justify-content-center align-items-center"><?= $weight['weight'] ?></label>
+                          <?php endforeach; ?>
+                        </div>
 
-                </tbody>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
+                      </div>
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputPrice">Nhập giá biến thể</label>
+                          <input type="text" name="variant_prices[]" id="inputName" class="form-control" value="<?= $value['variant_price'] ?>" placeholder="Nhập giá biến thể">
+                        </div>
+                        <?php if (isset($_SESSION['errors']['variant_prices'])) : ?>
+                          <?php foreach (($_SESSION['errors']['variant_prices']) as $variant_prices) : ?>
+                            <p class="text-danger"><?= $variant_prices ?></p>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </div>
+                      <!-- Biến thể -->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputDiscountPrice">Nhập giá khuyến mãi của biến thể</label>
+                          <input type="text" name="variant_sale[]" id="inputName" class="form-control" value="<?= $value['variant_sale_price'] ?>" placeholder="Nhập giá khuyến mãi biến thể">
+                        </div>
+                        <?php if (isset($_SESSION['errors']['variant_sale'])) : ?>
+                          <?php foreach (($_SESSION['errors']['variant_sale']) as $variant_sale) : ?>
+                            <p class="text-danger"><?= $variant_sale ?></p>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+              <div class="row">
+                <div class="col-12" style="margin-bottom: 20px">
+                  <button type="button" id="add-variant" class="btn btn-primary float-right">Thêm biến thể mới</button>
+                </div>
+              </div>
+              <!-- Trạng thái -->
+              <div class="form-group">
+                <label for="inputStatus">Trạng thái</label>
+                <select id="product_status" name="product_status" class="form-control custom-select">
+                  <option value="active"
+                    <?php
+                    if (isset($product['product_status']) && $product['product_status'] == 'active') {
+                      echo 'selected';
+                    }
+                    ?>>Hiện</option>
+                  <option value="hidden"
+                    <?php
+                    if (isset($product['product_status']) && $product['product_status'] == 'hidden') {
+                      echo 'selected';
+                    }
+                    ?>>Ẩn</option>
+                </select>
+              </div>
+              <?php if (isset($_SESSION['errors']['status'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['status'] ?></p>
+              <?php endif; ?>
+
+              <!-- Slogun -->
+              <div class="form-group">
+                <label for="inputName">Slogun</label>
+                <input type="text" name="slug" id="inputName" class="form-control" placeholder="Nhập tên sản phẩm" value="<?= $product['product_slug'] ?>">
+              </div>
+              <?php if (isset($_SESSION['errors']['slug'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['slug'] ?></p>
+              <?php endif; ?>
+
+
+              <!-- Mô tả sản phẩm -->
+              <div class="form-group">
+                <label for="inputDescription">Mô tả</label>
+                <textarea name="description" id="inputDescription" class="form-control" rows="4" placeholder="Nhập mô tả sản phẩm"><?= $product['product_slug'] ?></textarea>
+              </div>
+              <?php if (isset($_SESSION['errors']['description'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['description'] ?></p>
+              <?php endif; ?>
+
+              <!-- Upload ảnh -->
+              <div class="form-group">
+                <label for="inputImage">Upload ảnh</label>
+                <input type="file" name="product_image" id="inputImage" class="form-control">
+                <input type="hidden"  name="old_image" value="<?= $product['product_image'] ?>" id="old_image" class="form-control">
+                <img src="./images/product/<?= $product['product_image'] ?>" alt="" width="90px">
+              </div>
+              <?php if (isset($_SESSION['errors']['image'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['image'] ?></p>
+              <?php endif; ?>
+
+            </div><!-- /.card-body -->
+          </div><!-- /.card -->
+        </div><!-- /.col-md-12 -->
+      </div><!-- /.row -->
+
+      <!-- Submit Buttons -->
       <div class="row">
-        <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Save Changes" class="btn btn-success float-right">
+        <div class="col-12" style="margin-bottom: 20px">
+          <a href="?act=product" class="btn btn-secondary">Trở về</a>
+          <input type="submit" name="update-product" value="Cập nhật sản phẩm" class="btn btn-success float-right">
         </div>
       </div>
-    </section>
-    <!-- /.content -->
-  </div>
-<?php include '../views/admin/layout/footer.php';?>
+    </form>
+  </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+<script>
+  document.getElementById('add-variant').addEventListener('click', function() {
+    const container = document.getElementById('variants');
+    // Tạo ra một thẻ div
+    const newVariant = document.createElement('div');
+    newVariant.classList.add('mb-4');
+    newVariant.innerHTML = `
+      <div class="row mb-4">
+                  <div class="col-lg-4">
+                    <div class="mt-3 ">
+                      <label for="inputDiscountPrice">Weight</label>
+                      <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                      <?php foreach ($listWeight as $weight) : ?>
+                        <input type="checkbox" class="btn-check" id="weight-<?= $weight['id'] ?>-${container.children.length}" value="<?= $weight['id'] ?>" name="variant_weight[]">
+                        <label for="weight-<?= $weight['id'] ?>-${container.children.length}" class="btn btn-secondary avatar-sm rounded d-flex justify-content-center align-items-center"><?= $weight['weight'] ?></label>
+                        <?php endforeach; ?>
+                        </div>
+                        <?php if (isset($_SESSION['errors']['variant_weights'])) : ?>
+                        <p class="text-danger"><?= $_SESSION['errors']['variant_weights'] ?></p>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="inputPrice">Nhập giá biến thể</label>
+                        <input type="text" name="variant_prices[]" id="inputName" class="form-control" placeholder="Nhập giá biến thể" value="<?= isset($_POST['variant_prices']) ? $_POST['cost_price'] : '' ?>">
+                      
+                        </div>
+                         <?php if (isset($_SESSION['errors']['variant_prices'])) : ?>
+                        <?php foreach (($_SESSION['errors']['variant_prices']) as $variant_prices) : ?>
+                        <p class="text-danger"><?= $variant_prices ?></p>
+                      <?php endforeach; ?>
+                      <?php endif; ?>
+                    </div>
+                    <!-- Biến thể -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="inputDiscountPrice">Nhập giá khuyến mãi của biến thể</label>
+                        <input type="text" name="variant_sale[]" id="inputName" class="form-control" placeholder="Nhập giá khuyến mãi biến thể" value="<?= isset($_POST['variant_sale']) ? $_POST['view_count'] : '' ?>">
+                      </div>
+                      <?php if (isset($_SESSION['errors']['variant_sale'])) : ?>
+                      <?php foreach (($_SESSION['errors']['variant_sale']) as $variant_sale) : ?>
+                        <p class="text-danger"><?= $variant_sale ?></p>
+                      <?php endforeach; ?>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
+    `;
+    container.appendChild(newVariant);
+  })
+</script>
+<?php include '../views/admin/layout/footer.php'; ?>
