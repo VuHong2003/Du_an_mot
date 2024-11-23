@@ -8,14 +8,15 @@
     <div class="product-page">
         <div class="page">
             <div class="product-images">
-                <img src="../public/images/product-detail/01.jpg" alt="Main Product" class="main-image" />
-                <div class="thumbnails">
+                <img src="<?php $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
+
+                <!-- <div class="thumbnails">
                     <img src="../public/images/product-detail/01.jpg" alt="" />
                     <img src="../public/images/product-detail/01.jpg" alt="" />
                     <img src="../public/images/product-detail/01.jpg" alt="" />
                     <img src="../public/images/product-detail/01.jpg" alt="" />
 
-                </div>
+                </div> -->
             </div>
 
             <!-- Product Info -->
@@ -25,70 +26,72 @@
                         <a href="#" class="prev">← Prev Product</a>
                         <a href="#" class="next">Next Product →</a>
                     </div>
-                    <h1>Existing Product Name</h1>
+                    <h1><?= $productDetail['product_name'] ?></h1>
                     <p>SKU: 1234567 &nbsp; | &nbsp; BRAND: RADHUNI</p>
                     <div class="price">
-                        <span class="old-price">$38.00</span>
-                        <span class="new-price">$24.00</span>
+                        <span
+                            class="old-price"><?= number_format($productDetail['product_price'] * 1000, 0, ',', '.')  ?></span>
+                        <span
+                            class="new-price"><?= number_format($productDetail['product_sale_price'] * 1000, 0, ',', '.') ?></span>
                         <span class="per-kilo">/Per Kilo</span>
                     </div>
 
                     <div class="rating">
-                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
-                        <i class="fa-solid fa-star"></i> (3 Reviews)
+                        <label for="">Weight: </label>
+                        <?php foreach ($productDetail['variants'] as $variant): ?>
+                            <div class="variants">
+                                <button class="variant"><?php $variant['product_variant_weight'] ?></button>
+
+                            </div>
+
                     </div>
                     <p class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit facere
-                        harum natus amet soluta fuga.
+                        <?= $productDetail['product_description'] ?>
                     </p>
                     <div class="tags">
-                        <label for=""> Tags:</label>
+                        <label for=""> Total amount:</label>
+                        <span class="total_price">1200</span>
 
-                        <div class="tag1"><a href="#h">Organic</a></div>
-                        <div class="tag1"><a href="#h">Fruits</a></div>
-                        <div class="tag1"><a href="#h">Chilis</a></div>
                     </div>
-                    <div class="share">
-                        <label for="">Share:</label>
-                        <ul class="details-share-list">
-                            <li>
-                                <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
-                            </li>
+                <?php endforeach ?>
+                <div class="share">
+                    <label for="">Share:</label>
+                    <ul class="details-share-list">
+                        <li>
+                            <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
+                        </li>
 
-                            <li>
-                                <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
-                            </li>
+                        <li>
+                            <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
 
-                            <li>
-                                <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
-                            </li>
+                        <li>
+                            <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                        </li>
 
-                            <li>
-                                <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="actions">
-                        <button class="add-to-cart">
-                            <div class="carts">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <div class="cart">ADD TO CART</div>
-                            </div>
-                        </button>
-                        <div class="wish-shuffle">
-                            <button class="add-to-wish">
-                                <i class="fa-solid fa-heart"></i>
-                                <div class="wish">ADD TO WISH</div>
-                            </button>
-                            <button class="compares">
-                                <i class="fa-solid fa-shuffle"></i>
-                                <div class="compare">COMPARE THIS</div>
-                            </button>
+                        <li>
+                            <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="actions">
+                    <button class="add-to-cart">
+                        <div class="carts">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <div class="cart">ADD TO CART</div>
                         </div>
+                    </button>
+                    <div class="wish-shuffle">
+                        <button class="add-to-wish">
+                            <i class="fa-solid fa-heart"></i>
+                            <div class="wish">ADD TO WISH</div>
+                        </button>
+                        <button class="compares">
+                            <i class="fa-solid fa-shuffle"></i>
+                            <div class="compare">COMPARE THIS</div>
+                        </button>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

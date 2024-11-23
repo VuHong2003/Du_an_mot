@@ -11,12 +11,9 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="client/assets/css/style.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 
     <title>Trang chủ</title>
@@ -45,7 +42,8 @@
                         <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                     </button>
                     <a href="" class="box_favourite ">
-                        <div class="favourite"><i class="fa-regular fa-heart favourite" style="color: #ffffff;"></i></div>
+                        <div class="favourite"><i class="fa-regular fa-heart favourite" style="color: #ffffff;"></i>
+                        </div>
                         <span class="capitalize">Yêu thích</span>
                     </a>
 
@@ -76,36 +74,14 @@
                             <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
                         </button>
                         <ul class="list_nav" id="listNav">
+
                             <li class="category_item">
                                 <button class="category_menu">
-                                    <span class="capitalize">vegetable</span>
+                                    <span class="capitalize"> <?php $categories['category_name'] ?></span>
                                     <!-- <i class="fa-solid fa-chevron-right"></i> -->
                                 </button>
                             </li>
-                            <li class="category_item">
-                                <button class="category_menu">
-                                    <span>vegetable</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </li>
-                            <li class="category_item">
-                                <button class="category_menu">
-                                    <span>vegetable</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </li>
-                            <li class="category_item">
-                                <button class="category_menu">
-                                    <span>vegetable</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </li>
-                            <li class="category_item">
-                                <button class="category_menu">
-                                    <span>vegetable</span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </li>
+
                         </ul>
                     </div>
                     <nav class="nav_items">

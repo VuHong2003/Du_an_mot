@@ -15,8 +15,9 @@ main {
   margin-right: auto;
 }
 .product-images {
-  border: 5px;
-  margin-right: 20px;
+  /* border: 5px;
+  margin-right: 20px; */
+  background-color: white;
 }
 
 .main-image {
@@ -90,10 +91,30 @@ h1 {
 
 .rating {
   font-size: 14px;
+  height: 20px;
+  line-height: 0px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+}
+.variants {
+  padding-left: 20px;
+}
+.variant {
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #f0f0f0; /* Màu nền mặc định */
 
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.variant:focus {
+  outline: none; /* Xóa viền mặc định */
+  background-color: #2fa600; /* Màu nền khi được chọn */
+  color: white; /* Màu chữ khi được chọn */
+}
 .description {
   margin-bottom: 20px;
   font-size: 14px;
@@ -102,9 +123,17 @@ h1 {
 
 .tags {
   font-size: 14px;
+  height: 20px;
+  line-height: 20px;
   color: #555;
   margin-bottom: 20px;
   display: flex;
+}
+.total_price {
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 15px;
 }
 .tag1 {
   margin-left: 10px;
