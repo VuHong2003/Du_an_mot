@@ -11,16 +11,37 @@
     --white: #ffffff;
     --black: #000000;
     --blue--green: #1cd7cb;
+    --grey : #a0a3bd99;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.w{
+    width: 1120px;
 }
 
 .capitalize {
     text-transform: capitalize;
 }
 
+.line-through {
+    text-decoration: line-through;
+}
+
 .a_none {
     text-decoration: none;
     color: black;
     font-weight: 500;
+}
+
+.items-start {
+    flex: flex-start;
 }
 
 .paper_group p {
@@ -216,17 +237,6 @@ body {
     position: relative;
 }
 
-/* .btn_category {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-} */
 
 .list_nav {
     display: none; /* Ẩn mặc định */
@@ -391,7 +401,7 @@ body {
   }
   
   .nav_content_footer a,
-  ul li {
+  .list_address li {
     color: #ffffff; /* Điều chỉnh màu sắc nếu cần */
     margin-bottom: 8px;
     font-size: 14px;
@@ -609,9 +619,7 @@ h4{
 .rigister-button{
     border-radius: 50px;
 }
-button:hover {
-    background-color: #008f3d;
-}
+
 
 .signup-prompt {
     text-align: center;
