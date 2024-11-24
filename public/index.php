@@ -6,7 +6,6 @@ $action = isset($_GET['act']) ? $_GET['act'] : 'admin';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
 switch ($action) {
-        // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
         include '../views/admin/index.php';
         break;
@@ -33,7 +32,6 @@ switch ($action) {
         break;
     case 'category':
         $categoryAdmin->index();
-        // include '../views/admin/category/list.php';
         break;
     case 'category-create':
         $categoryAdmin->addCategory();
@@ -46,7 +44,6 @@ switch ($action) {
         break;
         // ======================== CLIENT ===========================
 
-        // http://localhost/Du_an_mot/public/?act=client
     case 'client':
         include '../views/client/index.php';
         break;
@@ -64,8 +61,14 @@ switch ($action) {
     case 'login':
         include '../views/client/auth/login.php';
         break;
-    // ======================== USER ===========================
+        // ======================== USER ===========================
     case 'dashboard';
         include '../views/client/user/dashboard.php';
+        break;
+    case 'account';
+        include '../views/client/user/account.php';
+        break;
+    case 'carts';
+        include '../views/client/carts.php';
         break;
 }
