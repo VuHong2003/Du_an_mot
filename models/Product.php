@@ -37,14 +37,15 @@ class product extends connect
         return $this->connect()->lastInsertId();
     }
 
-    public function listProduct()
+    public function listProduct(): array
     {
         $sql = "SELECT 
                     products.id AS product_id, 
                     products.name AS product_name, 
                     products.prices AS product_price, 
                     products.sale AS product_sale_price, 
-                    products.images AS product_image, 
+                    products.images AS product_image,
+                    products.slug AS product_slug,
                     products.status AS product_status, 
                     categories.id AS category_id, 
                     categories.name AS category_name,
@@ -143,5 +144,62 @@ class product extends connect
         $sql = 'DELETE FROM products WHERE id = ?';
         $stmt = $this->connect()->prepare($sql);
         return $stmt->execute([$_GET['id']]);
+    public function getProductBySlug($slug)
+    {
+        $sql = 'SELECT
+        
+         products.id AS product_id, 
+                    products.name AS product_name, 
+                    products.prices AS product_price, 
+                    products.sale AS product_sale_price, 
+                    products.images AS product_image, 
+                    products.status AS product_status, 
+                    products.slug AS product_slug,
+                    products.description AS product_description,
+                    categories.id AS category_id, 
+                    categories.name AS category_name,
+                    products_variants.id AS product_variant_id,
+                    products_variants.price AS variant_price,
+                    products_variants.sale_price AS variant_sale_price,
+                    variant_weights.weight AS product_variant_weight
+        FROM products
+        LEFT JOIN categories ON products.catrgories_id = categories.id
+      LEFT JOIN products_variants ON products.id = products_variants.product_id
+        LEFT JOIN variant_weights ON products_variants.variant_weight_id = variant_weights.id
+        WHERE products.slug = ?';
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$slug]);
+        $listProduct = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $groupedProduct = [];
+
+        // Lặp qua từng sản phẩm trong danh sách product
+        foreach ($listProduct as $product) {
+            // Nếu sản phẩm chưa tồn tại thì mới thêm vào
+            if (!isset($groupedProduct[$product['product_id']])) {
+                $groupedProduct[$product['product_id']] = $product;
+                $groupedProduct[$product['product_id']]['variants'] = [];
+            }
+            //Kiểm tra biến thể đã có trong mảng chưa
+            $exist = false;
+            foreach ($groupedProduct[$product['product_id']]['variants'] as $variant) {
+
+                if (
+                    $variant['variant_weight_id'] == $product['variant_weight_id'] &&
+                    $variant['variant_sale_price'] == $product['variant_sale_price']
+                ) {
+                    $exist = true;
+                    break;
+                }
+            }
+            if (!$exist) {
+                $groupedProduct[$product['product_id']]['variants'][] = [
+                    'product_variant_id' => $product['product_variant_id'],
+                    'variant_sale_price' => $product['variant_sale_price'],
+                    'product_variant_weight' => $product['product_variant_weight']
+
+                ];
+            }
+        }
+        return $groupedProduct;
     }
 }

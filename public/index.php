@@ -2,9 +2,12 @@
 session_start();
 require_once '../controllers/admin/CategoryController.php';
 require_once '../controllers/admin/ProductController.php';
+require_once '../controllers/client/HomeController.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'admin';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
+//========================== CLIENT
+$home = new HomeController();
 switch ($action) {
     case 'admin':
         include '../views/admin/index.php';
@@ -45,10 +48,11 @@ switch ($action) {
         // ======================== CLIENT ===========================
 
     case 'client':
-        include '../views/client/index.php';
+        $home->index();
         break;
     case 'product-detail':
-        include '../views/client/product-detail.php';
+        // include '../views/client/product-detail.php';
+        $home->getProductDetail();
         break;
     case 'products':
         include '../views/client/products.php';
