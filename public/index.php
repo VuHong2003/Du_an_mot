@@ -9,7 +9,6 @@ $productAdmin = new ProductController();
 //========================== CLIENT
 $home = new HomeController();
 switch ($action) {
-        // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
         include '../views/admin/index.php';
         break;
@@ -30,7 +29,6 @@ switch ($action) {
         break;
     case 'category':
         $categoryAdmin->index();
-        // include '../views/admin/category/list.php';
         break;
     case 'category-create':
         $categoryAdmin->addCategory();
@@ -43,7 +41,6 @@ switch ($action) {
         break;
         // ======================== CLIENT ===========================
 
-        // http://localhost/Du_an_mot/public/?act=client
     case 'client':
         $home->index();
         break;
@@ -65,5 +62,11 @@ switch ($action) {
         // ======================== USER ===========================
     case 'dashboard';
         include '../views/client/user/dashboard.php';
+        break;
+    case 'account';
+        include '../views/client/user/account.php';
+        break;
+    case 'carts';
+        include '../views/client/carts.php';
         break;
 }
