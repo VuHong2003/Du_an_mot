@@ -27,6 +27,12 @@ switch ($action) {
     case 'product-update':
         $productAdmin->update();
         break;
+    case 'product-variant-delete':
+        $productAdmin->deleteProductVariant();
+        break;
+    case 'product-delete':
+        $productAdmin->deleteProduct();
+        break;
     case 'category':
         $categoryAdmin->index();
         break;

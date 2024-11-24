@@ -131,6 +131,19 @@ class product extends connect
         $stmt = $this->connect()->prepare($sql);
         return $stmt->execute([$price, $sale_price, $variant_weight_id, $product_id, $id]);
     }
+
+
+    public function removeProductVariant() {
+        $sql = 'DELETE FROM products_variants WHERE id=?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$_GET['id']]);
+    }
+
+    public function removeProduct()
+    {
+        $sql = 'DELETE FROM products WHERE id = ?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$_GET['id']]);
     public function getProductBySlug($slug)
     {
         $sql = 'SELECT
