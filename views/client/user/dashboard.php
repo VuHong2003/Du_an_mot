@@ -9,7 +9,7 @@
                             <a href="">
                                 <img src="<?=  'assets/client/images/' ?>avatar/avatar.jpg" alt="" class="image text-center">
                             </a>
-                            <h3 class="capitalize">miron mahmud</h3>
+                            <h3 class="capitalize"><?=$_SESSION['user']['name']?></h3>
                             <p class="">+8801838288389</p>
                         </div>
                         <nav class="list_nav_profile">
@@ -27,7 +27,7 @@
                                 <i class="fa-solid fa-arrows-rotate"></i>
                                 <span class="capitalize">return orders</span>
                             </a>
-                            <a href="?act=account&id=1">
+                            <a href="?act=update-profile">
                                 <i class="fa-solid fa-user"></i>
                                 <span class="capitalize">account information</span>
                             </a>

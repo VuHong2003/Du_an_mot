@@ -48,17 +48,32 @@
                     </a>
 
                     <div class="account">
-                        <button class="box_favourite" onclick="toggleDropdown()">
-                            <div class="favourite"><i class="fa-regular fa-user" style="color: #ffffff;"></i></div>
-                            <p><span class="capitalize">Account</span></p>
-                            <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div class="account-dropdown" id="accountDropdown">
-                            <a href="?act=register" class="dropdown-item register">Register your account</a>
-                            <span class="or-text">OR</span>
-                            <a href="?act=login" class="dropdown-item login">Login to your account</a>
-                        </div>
+                        <?php
+                        if (!isset($_SESSION['user'])) {
+                        ?>
+                            <button class="box_favourite" onclick="toggleDropdown()">
+                                <div class="favourite"><i class="fa-regular fa-user" style="color: #ffffff;"></i></div>
+                                <p><span class="capitalize">Account</span></p>
+                                <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div class="account-dropdown" id="accountDropdown">
+                                <a href="?act=register" class="dropdown-item register">Register your account</a>
+                                <span class="or-text">OR</span>
+                                <a href="?act=login" class="dropdown-item login">Login to your account</a>
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            <a href="?act=profile">
+                                <button class="box_favourite" >
+                                    <div class="favourite"><i class="fa-regular fa-user" style="color: #ffffff;"></i></div>
+                                    <p><span class="capitalize"><?=$_SESSION['user']['name']?></span></p>
+                                </button>
+                            </a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -100,3 +115,17 @@
             </div>
         </div>
     </header>
+    <?php
+    if (isset($_SESSION['error'])) {
+        echo "<script>
+        toastr.warning('{$_SESSION['error']}');
+      </script>";
+        unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+        echo "<script>
+        toastr.success('{$_SESSION['success']}');
+      </script>";
+        unset($_SESSION['success']);
+    }
+    ?>

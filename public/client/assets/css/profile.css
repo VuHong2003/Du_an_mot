@@ -236,6 +236,10 @@ tbody .action:hover {
     margin-top: 20px;
 }
 
+.dashboard .text-danger{
+    color: red;
+}
+
 .dashboard .list_input {
     margin-top: 20px;
 }
@@ -249,7 +253,7 @@ tbody .action:hover {
     color: red;
 }
 
-.dashboard .list_input .sub_input input {
+.dashboard .list_input .sub_input input, .list_input select {
     padding: 10px;
     font-family: "Saira Semi Condensed", sans-serif;
     border-radius: 8px;
