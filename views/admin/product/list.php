@@ -66,7 +66,7 @@
                             <i class="fa-solid fa-pen-to-square"></i> Edit
                           </button>
                         </a>
-                        <a title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa không ?')" href="index.php?act=product-delete&id=<?= $value['product_id'] ?>">
+                        <a title="Xóa" onclick="return confirm('Bạn chắc chắn muốn xóa không ?')" href="index.php?act=product-delete&id=<?= $product['product_id'] ?>">
                           <button type="button" class="btn btn-danger">
                             <i class="fa-solid fa-trash"></i> Delete
                           </button>
