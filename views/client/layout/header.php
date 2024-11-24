@@ -24,7 +24,7 @@
     <header class="header">
         <div class="top_header">
             <div class="logo">
-                <a href="" class="logo a_none">
+                <a href="?act=client" class="logo a_none">
                     <img src="../public/images/logo/dark.png" alt="" />
                 </a>
             </div>
@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                     <nav class="nav_items">
-                        <a href="#!" class="a_none capitalize">Trang chủ</a>
+                        <a href="?act=client" class="a_none capitalize">Trang chủ</a>
                         <a href="#!" class="a_none capitalize">Offers</a>
                         <a href="#!" class="a_none capitalize">Daily Deals</a>
                         <a href="#!" class="a_none capitalize">Flash Sale</a>
