@@ -8,7 +8,8 @@
     <div class="product-page">
         <div class="page">
             <div class="product-images">
-                <img src="<?php $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
+                <img src="./images/product/<?= $productDetail['product_image'] ?>" alt="Main Product"
+                    class="main-image" />
 
                 <!-- <div class="thumbnails">
                     <img src="../public/images/product-detail/01.jpg" alt="" />
@@ -40,8 +41,7 @@
                         <label for="">Weight: </label>
                         <?php foreach ($productDetail['variants'] as $variant): ?>
                             <div class="variants">
-                                <button class="variant"><?php $variant['product_variant_weight'] ?></button>
-
+                                <button class="variant"><?= $variant['product_variant_weight'] ?></button>
                             </div>
 
                     </div>
