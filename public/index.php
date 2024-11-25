@@ -3,13 +3,16 @@ session_start();
 require_once '../controllers/admin/CategoryController.php';
 require_once '../controllers/admin/ProductController.php';
 require_once '../controllers/client/HomeController.php';
+require_once '../controllers/client/AuthController.php';
+require_once '../controllers/client/ProfileController.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'admin';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
+$profile = new ProfileController();
 //========================== CLIENT
+$auth = new authController();
 $home = new HomeController();
 switch ($action) {
-        // http://localhost/Du_an_mot/public/?act=admin
     case 'admin':
         include '../views/admin/index.php';
         break;
@@ -28,9 +31,14 @@ switch ($action) {
     case 'product-update':
         $productAdmin->update();
         break;
+    case 'product-variant-delete':
+        $productAdmin->deleteProductVariant();
+        break;
+    case 'product-delete':
+        $productAdmin->deleteProduct();
+        break;
     case 'category':
         $categoryAdmin->index();
-        // include '../views/admin/category/list.php';
         break;
     case 'category-create':
         $categoryAdmin->addCategory();
@@ -43,7 +51,6 @@ switch ($action) {
         break;
         // ======================== CLIENT ===========================
 
-        // http://localhost/Du_an_mot/public/?act=client
     case 'client':
         $home->index();
         break;
@@ -57,13 +64,21 @@ switch ($action) {
         // ======================== AUTH ===========================
 
     case 'register':
-        include '../views/client/auth/register.php';
+        $auth->registers();
         break;
     case 'login':
-        include '../views/client/auth/login.php';
+        $auth->signins();
         break;
         // ======================== USER ===========================
-    case 'dashboard';
+    case 'profile';
+       
         include '../views/client/user/dashboard.php';
+        break;
+    case 'update-profile';
+        $profile->updateProfile();
+        include '../views/client/user/account.php';
+        break;
+    case 'carts';
+        include '../views/client/carts.php';
         break;
 }

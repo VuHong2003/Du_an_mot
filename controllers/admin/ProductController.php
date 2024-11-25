@@ -68,11 +68,11 @@ class  ProductController extends Product
             }
             $_SESSION['errors'] = $errors;
 
-        //     echo '<pre>';
-        //     print_r($_POST);
-        //     print_r($_SESSION);
-        //     echo '</pre>';
-        // exit;
+            //     echo '<pre>';
+            //     print_r($_POST);
+            //     print_r($_SESSION);
+            //     echo '</pre>';
+            // exit;
 
             if ($errors) {
                 header('Location: ?act=product-create');
@@ -162,22 +162,22 @@ class  ProductController extends Product
             //     $errors['image'] = 'Vui lòng thêm file hình ảnh';
             // }
             $_SESSION['errors'] = $errors;
-           
+
 
             $file = $_FILES['product_image'];
             $image = uniqid() . '-' . preg_replace('/[^a-zA-Z0-9]/', '', basename($file['name']));
             if ($file['size'] > 0) {
                 if (move_uploaded_file($file['tmp_name'], './images/product/' . $image)) {
                     // Xóa ảnh cũ
-                    if (isset($_POST['old_image']) && file_exists('./images/product/'. $_POST['old_image'])) {
+                    if (isset($_POST['old_image']) && file_exists('./images/product/' . $_POST['old_image'])) {
                         unlink('./images/product/' . $_POST['old_image']);
                     }
-                }   
+                }
             } else {
                 $image = $_POST['old_image'];
             }
             // Cập nhật thông tin sản phẩm
-            $updateProduct = $this->updateProduct($_GET['id'], $_POST['product_name'], $_POST['description'], $_POST['prices'], $_POST['cost_price'], $_POST['sale'], $image, $_POST['view_count'], $_POST['product_status'], $_POST['catrgories_id'], $_POST['slug']);
+            $updateProduct = $this->updateProduct($_GET['id'], $_POST['product_name'], $_POST['product_description'], $_POST['prices'], $_POST['cost_price'], $_POST['sale'], $image, $_POST['view_count'], $_POST['product_status'], $_POST['catrgories_id'], $_POST['slug']);
             if ($updateProduct) {
                 if (isset($_POST['variant_weight'])) {
                     foreach ($_POST['variant_weight'] as $key => $weight) {
@@ -212,4 +212,35 @@ class  ProductController extends Product
             }
         }
     }
+
+    public function deleteProductVariant()
+    {
+        try {
+            $this->removeProductVariant();
+            $_SESSION['success'] = 'Xóa biến thể thành công';
+            header('Location' . $_SERVER['HTTP_REFERER']);
+            exit();
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            header('Location' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+    }
+  
+  
+    public function deleteProduct()
+    {
+        try {
+            $this->removeProduct();
+            $_SESSION['success'] = 'Xóa biến thể thành công';
+            header('Location: index.php?act=product');
+            exit();
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+            header('Location' . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+    }
+
+    
 }

@@ -131,6 +131,20 @@ class product extends connect
         $stmt = $this->connect()->prepare($sql);
         return $stmt->execute([$price, $sale_price, $variant_weight_id, $product_id, $id]);
     }
+
+
+    public function removeProductVariant() {
+        $sql = 'DELETE FROM products_variants WHERE id=?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$_GET['id']]);
+    }
+
+    public function removeProduct()
+    {
+        $sql = 'DELETE FROM products WHERE id = ?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$_GET['id']]);
+    }
     public function getProductBySlug($slug)
     {
         $sql = 'SELECT
@@ -151,7 +165,7 @@ class product extends connect
                     variant_weights.weight AS product_variant_weight
         FROM products
         LEFT JOIN categories ON products.catrgories_id = categories.id
-      LEFT JOIN products_variants ON products.id = products_variants.product_id
+        LEFT JOIN products_variants ON products.id = products_variants.product_id
         LEFT JOIN variant_weights ON products_variants.variant_weight_id = variant_weights.id
         WHERE products.slug = ?';
         $stmt = $this->connect()->prepare($sql);

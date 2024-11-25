@@ -105,8 +105,9 @@
               <div id="variants">
                 <?php foreach ($variants as $key => $value) : ?>
                   <div class="row mb-4">
+                    <a href=" ?act=product-variant-delete&variant_id=<?= $value['product_id'] ?>" class="d-flex justify-content-end mt-2" style="text-decoration: none; color:black;"><i class="fa-regular fa-circle-xmark"></i></a>
                     <div class="col-lg-4">
-                      <input type="hidden" name="product_id[]" value="<?= $value['product_id']?>">
+                      <input type="hidden" name="product_id[]" value="<?= $value['product_id'] ?>">
                       <div class="mt-3 ">
                         <label for="inputDiscountPrice">Weight</label>
                         <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
@@ -189,17 +190,17 @@
               <!-- Mô tả sản phẩm -->
               <div class="form-group">
                 <label for="inputDescription">Mô tả</label>
-                <textarea name="description" id="inputDescription" class="form-control" rows="4" placeholder="Nhập mô tả sản phẩm"><?= $product['product_slug'] ?></textarea>
+                <textarea name="product_description" id="inputDescription" class="form-control" rows="4" placeholder="Nhập mô tả sản phẩm"><?= $product['product_description'] ?></textarea>
               </div>
-              <?php if (isset($_SESSION['errors']['description'])) : ?>
-                <p class="text-danger"><?= $_SESSION['errors']['description'] ?></p>
+              <?php if (isset($_SESSION['errors']['product_description'])) : ?>
+                <p class="text-danger"><?= $_SESSION['errors']['product_description'] ?></p>
               <?php endif; ?>
 
               <!-- Upload ảnh -->
               <div class="form-group">
                 <label for="inputImage">Upload ảnh</label>
                 <input type="file" name="product_image" id="inputImage" class="form-control">
-                <input type="hidden"  name="old_image" value="<?= $product['product_image'] ?>" id="old_image" class="form-control">
+                <input type="hidden" name="old_image" value="<?= $product['product_image'] ?>" id="old_image" class="form-control">
                 <img src="./images/product/<?= $product['product_image'] ?>" alt="" width="90px">
               </div>
               <?php if (isset($_SESSION['errors']['image'])) : ?>
@@ -222,13 +223,14 @@
   </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 <script>
-  document.getElementById('add-variant').addEventListener('click', function() {
+  document.getElementById('add-variant').addEventListener('click', function() { 
     const container = document.getElementById('variants');
     // Tạo ra một thẻ div
     const newVariant = document.createElement('div');
     newVariant.classList.add('mb-4');
     newVariant.innerHTML = `
       <div class="row mb-4">
+                          <a href="" class="d-flex justify-content-end mt-2" style="text-decoration: none; color:black;"><i class="fa-regular fa-circle-xmark"></i></a>
                   <div class="col-lg-4">
                     <div class="mt-3 ">
                       <label for="inputDiscountPrice">Weight</label>
