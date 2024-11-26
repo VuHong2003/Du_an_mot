@@ -1,7 +1,7 @@
 <?php
 require_once '../models/Category.php';
 require_once '../models/Product.php';
-class HomeController
+class HomeController 
 {
     protected $categories;
     protected $products;
@@ -19,6 +19,7 @@ class HomeController
     }
     public function getProductDetail()
     {
+        $categories = $this->categories->listCategory();
         $productDetail = $this->products->getProductBySlug($_GET['slug']);
         // Hàm reset để lấy ra phần tử đầu tiên
         $productDetail = reset($productDetail);
