@@ -29,9 +29,9 @@
                 </a>
             </div>
             <div class="box_search">
-                <form action="">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="search" placeholder="Search...">
+                <form action="index.php?act=client" method="post">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="search" placeholder="Tìm kiếm sản phẩm..." name="kyw">
                 </form>
             </div>
             <div class="group_items">
