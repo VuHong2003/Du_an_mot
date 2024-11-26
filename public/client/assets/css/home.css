@@ -106,18 +106,14 @@
 }
 
 .popular_items {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid; /* Kích hoạt Grid Layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Định nghĩa cột động */
+  gap: 20px; /* Khoảng cách giữa các phần tử */
+  width: 1120px; /* Đặt chiều rộng tổng */
+  margin: 0 auto; /* Canh giữa nếu cần */
 }
 
-.flex_popular {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 11206px;
-  margin-bottom: 70px;
-}
+
 
 .box_popular {
   display: flex;
@@ -136,6 +132,7 @@
 }
 
 .img_home_prd {
+  border-radius: 6px;
   width: 100%;
   height: 100%;
   transition: transform 0.5s ease; /* Hiệu ứng phóng to mượt mà */

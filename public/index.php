@@ -5,7 +5,7 @@ require_once '../controllers/admin/ProductController.php';
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/ProfileController.php';
-$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+$action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
@@ -79,6 +79,9 @@ switch ($action) {
         include '../views/client/user/account.php';
         break;
     case 'carts';
-        include '../views/client/carts.php';
+        include '../views/client/cart/carts.php';
+        break;
+    case 'checkout';
+        include '../views/client/checkout/checkout.php.php';
         break;
 }

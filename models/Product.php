@@ -161,7 +161,9 @@ class product extends connect
                     categories.name AS category_name,
                     products_variants.id AS product_variant_id,
                     products_variants.price AS variant_price,
+                    products_variants.variant_weight_id AS variant_weight_id,
                     products_variants.sale_price AS variant_sale_price,
+                    variant_weights.id AS product_variant_id,
                     variant_weights.weight AS product_variant_weight
         FROM products
         LEFT JOIN categories ON products.catrgories_id = categories.id
@@ -185,7 +187,7 @@ class product extends connect
             foreach ($groupedProduct[$product['product_id']]['variants'] as $variant) {
 
                 if (
-                    $variant['variant_weight_id'] == $product['variant_weight_id'] &&
+                    $variant['product_variant_id'] == $product['product_variant_id'] &&
                     $variant['variant_sale_price'] == $product['variant_sale_price']
                 ) {
                     $exist = true;

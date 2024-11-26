@@ -8,92 +8,94 @@
     <div class="product-page">
         <div class="page">
             <div class="product-images">
-                <img src="<?php $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
+                <img src="./images/product/<?= $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
 
                 <!-- <div class="thumbnails">
                     <img src="../public/images/product-detail/01.jpg" alt="" />
                     <img src="../public/images/product-detail/01.jpg" alt="" />
-                    <img src="../public/images/product-detail/01.jpg" alt="" />
+                    <img src="../public/images/product-detail/01.jpg" alt="" /> 
                     <img src="../public/images/product-detail/01.jpg" alt="" />
 
                 </div> -->
             </div>
 
             <!-- Product Info -->
-            <div class="product-info">
-                <div class="info">
-                    <div class="navigation">
-                        <a href="#" class="prev">← Prev Product</a>
-                        <a href="#" class="next">Next Product →</a>
-                    </div>
-                    <h1><?= $productDetail['product_name'] ?></h1>
-                    <p>SKU: 1234567 &nbsp; | &nbsp; BRAND: RADHUNI</p>
-                    <div class="price">
-                        <span
-                            class="old-price"><?= number_format($productDetail['product_price'] * 1000, 0, ',', '.')  ?></span>
-                        <span
-                            class="new-price"><?= number_format($productDetail['product_sale_price'] * 1000, 0, ',', '.') ?></span>
-                        <span class="per-kilo">/Per Kilo</span>
-                    </div>
-
-                    <div class="rating">
-                        <label for="">Weight: </label>
-                        <?php foreach ($productDetail['variants'] as $variant): ?>
-                            <div class="variants">
-                                <button class="variant"><?php $variant['product_variant_weight'] ?></button>
-
-                            </div>
-
-                    </div>
-                    <p class="description">
-                        <?= $productDetail['product_description'] ?>
-                    </p>
-                    <div class="tags">
-                        <label for=""> Total amount:</label>
-                        <span class="total_price">1200</span>
-
-                    </div>
-                <?php endforeach ?>
-                <div class="share">
-                    <label for="">Share:</label>
-                    <ul class="details-share-list">
-                        <li>
-                            <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="actions">
-                    <button class="add-to-cart">
-                        <div class="carts">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <div class="cart">ADD TO CART</div>
+            <form action="?act=add-to-cart" method="post">
+                <div class="product-info">
+                    <input type="hidden" name="product_id" value="<?= $productDetail['product_id'] ?>">
+                    <div class="info">
+                        <div class="navigation">
+                            <a href="#" class="prev">← Prev Product</a>
+                            <a href="#" class="next">Next Product →</a>
                         </div>
-                    </button>
-                    <div class="wish-shuffle">
-                        <button class="add-to-wish">
-                            <i class="fa-solid fa-heart"></i>
-                            <div class="wish">ADD TO WISH</div>
-                        </button>
-                        <button class="compares">
-                            <i class="fa-solid fa-shuffle"></i>
-                            <div class="compare">COMPARE THIS</div>
-                        </button>
+                        <h1><?= $productDetail['product_name'] ?></h1>
+                        <p>SKU: 1234567 &nbsp; | &nbsp; BRAND: RADHUNI</p>
+                        <div class="price">
+                            <span
+                                class="old-price"><?= number_format($productDetail['product_price'] * 1000, 0, ',', '.')  ?></span>
+                            <span
+                                class="new-price"><?= number_format($productDetail['product_sale_price'] * 1000, 0, ',', '.') ?></span>
+                            <span class="per-kilo">/Per Kilo</span>
+                        </div>
+                        <!--  -->
+                        <div class="rating">
+                            <label for="">Weight: </label>
+                            <?php foreach ($productDetail['variants'] as $variant) : ?>
+                                <div class="variants">
+                                    <button class="variant"><?= $variant['product_variant_weight'] ?></button>
+
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                        <p class="description">
+                            <?= $productDetail['product_description'] ?>
+                        </p>
+                        <div class="tags">
+                            <label for=""> Total amount:</label>
+                            <span class="total_price">1200</span>
+
+                        </div>
+                        <div class="share">
+                            <label for="">Share:</label>
+                            <ul class="details-share-list">
+                                <li>
+                                    <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="actions">
+                            <button class="add-to-cart">
+                                <div class="carts">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <div class="cart">ADD TO CART</div>
+                                </div>
+                            </button>
+                            <div class="wish-shuffle">
+                                <button name="add_to_cart" class="add-to-wish">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <div class="wish">ADD TO WISH</div>
+                                </button>
+                                <button class="compares">
+                                    <i class="fa-solid fa-shuffle"></i>
+                                    <div class="compare">COMPARE THIS</div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="containers">
