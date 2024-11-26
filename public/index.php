@@ -2,11 +2,14 @@
 session_start();
 require_once '../controllers/admin/CategoryController.php';
 require_once '../controllers/admin/ProductController.php';
+require_once '../controllers/admin/UserController.php';
+
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/ProfileController.php';
 $action = isset($_GET['act']) ? $_GET['act'] : 'admin';
 $categoryAdmin = new CategoryController();
+$userAdmin = new UserController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
 //========================== CLIENT
@@ -49,6 +52,10 @@ switch ($action) {
     case 'category-delete':
         $categoryAdmin->deleteCategory($_GET['id']);
         break;
+    case 'users':
+        $userAdmin->index();
+        break;
+
         // ======================== CLIENT ===========================
 
     case 'client':
@@ -71,7 +78,7 @@ switch ($action) {
         break;
         // ======================== USER ===========================
     case 'profile';
-       
+
         include '../views/client/user/dashboard.php';
         break;
     case 'update-profile';
