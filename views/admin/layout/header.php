@@ -407,8 +407,6 @@
             <li class="nav-header">DỊCH VỤ</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <!-- <i class="nav-icon fas fa-edit"></i>
-                <i class="nav-icon fas fa-edit"></i> -->
                 <i class="nav-icon fa-solid fa-cart-shopping"></i>
                 <p>
                   Sản phẩm
@@ -436,43 +434,24 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Sản phẩm
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?act=product" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>List</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?act=product-edit" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Edit</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?act=product-create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Create</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+         
             <li class="nav-header">QUẢN LÝ</li>
             <li class="nav-item">
               <a href="admin/assets/pages/calendar.html" class="nav-link">
-                <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
                 <i class="nav-icon fa-solid fa-user"></i>
                 <p>
                   Thành viên
-                  <span class="badge badge-info right">2</span>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-header">CÀI ĐẶT HỆ THỐNG</li>
+            <li class="nav-item">
+              <a href="?act=setting" class="nav-link">
+              <i class="nav-icon fa-solid fa-gear"></i>
+                <p>
+                  Cài đặt
+                  <span class="badge badge-info right"></span>
                 </p>
               </a>
             </li>

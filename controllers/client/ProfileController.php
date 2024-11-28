@@ -1,7 +1,18 @@
 <?php
+    require_once '../models/Category.php';
     require_once '../models/User.php';
+    require_once '../models/Settings.php';
     class ProfileController extends User{
+        protected $categories;
+        protected $setting;
+        public function __construct()
+        {
+            $this->categories   = new Category();
+            $this->setting      = new Settings();
+        }
         public function updateProfile(){
+            $categories = $this->categories->listCategory();
+            $GLOBALS['settings'] = $this->setting->getAllSetting();
             if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update-profile'])){
                 // echo '<pre>';
                 // print_r($_SESSION['user']);
@@ -38,6 +49,8 @@
                 }
 
             }
+        
+            include '../views/client/user/account.php';
         }
     }
 ?>

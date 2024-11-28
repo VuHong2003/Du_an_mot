@@ -2,45 +2,38 @@
 require_once '../models/Category.php';
 require_once '../models/Product.php';
 require_once '../models/Home.php';
-class HomeController 
+require_once '../models/Settings.php';
+class HomeController
 {
     // SELECT * FROM `products` WHERE `name` LIKE '%a%'
     protected $categories;
     protected $products;
     protected $home;
+    protected $setting;
     public function __construct()
     {
-        $this->categories = new Category();
-        $this->products = new product();
-        $this->home = new Home();
+        $this->categories   = new Category();
+        $this->products     = new product();
+        $this->home         = new Home();
+        $this->setting      = new Settings();
     }
     public function index()
     {
-
         // Tìm kiếm sản phẩm
-        if(isset($_POST['kyw']) && $_POST['kyw'] != ''){
+        if (isset($_POST['kyw']) && $_POST['kyw'] != '') {
             $kyw = $_POST['kyw'];
-            $categories = $this->categories->listCategory();
+            // var_dump($GLOBALS['category']); die();
             $productSearch = $this->home->searchProduct($kyw);
-            // var_dump($_POST);
-            // exit();
+            $GLOBALS['settings'] = $this->setting->getAllSetting();
             include '../views/client/search.php';
-
-        }else{
+        } else {
             // $kyw = '';
             $categories = $this->categories->listCategory();
             $products = $this->products->listProduct();
+            $GLOBALS['settings'] = $this->setting->getAllSetting();
+            // var_dump($setting); die();
             include '../views/client/index.php';
         }
-        
-
-
-
-
-        // Lấy sản phẩm
-      
-
-        // include '../views/client/index.php';
     }
     public function getProductDetail()
     {
