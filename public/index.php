@@ -87,6 +87,12 @@ switch ($action) {
     case 'update-profile';
         $profile->updateProfile();
         break;
+    case 'update-password';
+        $profile->updatePassProfile();
+        break;
+    case 'logout';
+        $profile->logout();
+        break;
     case 'carts';
         $cart->index();
         break;
