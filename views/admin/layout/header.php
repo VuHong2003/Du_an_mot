@@ -31,9 +31,34 @@
   <link rel="stylesheet" href="admin/assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="admin/assets/plugins/summernote/summernote-bs4.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Thông báo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
+  <?php
+  if (isset($_SESSION['error'])) {
+    echo "<script>
+        toastr.warning('{$_SESSION['error']}');
+      </script>";
+    unset($_SESSION['error']);
+  }
+  if (isset($_SESSION['success'])) {
+    echo "<script>
+        toastr.success('{$_SESSION['success']}');
+      </script>";
+    unset($_SESSION['success']);
+  }
+  ?>
   <div class="wrapper">
 
     <!-- Preloader -->
@@ -220,7 +245,7 @@
               <a href="index.php?act=admin" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                    Dashboard
+                  Dashboard
                   <span class="right badge badge-danger">Hot</span>
                 </p>
               </a>
@@ -382,8 +407,6 @@
             <li class="nav-header">DỊCH VỤ</li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <!-- <i class="nav-icon fas fa-edit"></i>
-                <i class="nav-icon fas fa-edit"></i> -->
                 <i class="nav-icon fa-solid fa-cart-shopping"></i>
                 <p>
                   Sản phẩm
@@ -411,43 +434,24 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Sản phẩm
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?act=product" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>List</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?act=product-edit" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Edit</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?act=product-create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Create</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+         
             <li class="nav-header">QUẢN LÝ</li>
             <li class="nav-item">
               <a href="admin/assets/pages/calendar.html" class="nav-link">
-                <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
                 <i class="nav-icon fa-solid fa-user"></i>
                 <p>
                   Thành viên
-                  <span class="badge badge-info right">2</span>
+                  <span class="badge badge-info right"></span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-header">CÀI ĐẶT HỆ THỐNG</li>
+            <li class="nav-item">
+              <a href="?act=setting" class="nav-link">
+              <i class="nav-icon fa-solid fa-gear"></i>
+                <p>
+                  Cài đặt
+                  <span class="badge badge-info right"></span>
                 </p>
               </a>
             </li>

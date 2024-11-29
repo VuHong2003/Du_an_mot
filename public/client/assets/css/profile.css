@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.profile  .information {
+.profile  .information_prf {
     display: block;
     margin-top: 20px;
 }
@@ -28,42 +28,42 @@
     padding: 2px;
 }
 
-.profile .list_nav {
+.profile .list_nav_profile {
     display: block;
     margin-top: 20px;
 }
 
-.profile .list_nav .active {
+.profile .list_nav_profile .active {
     background-color: #f2fcf7;
     color: var(--main-color);
 }
 
-.profile .list_nav .active i {
+.profile .list_nav_profile .active i {
     color: var(--main-color);
 }
 
-.profile .list_nav i:hover {
+.profile .list_nav_profile i:hover {
     color: var(--main-color);
 }
 
-.profile .list_nav a:hover i {
+.profile .list_nav_profile a:hover i {
     color: var(--main-color);
     transition: all 0.5s;
 }
 
-.profile .list_nav a:hover {
+.profile .list_nav_profile a:hover {
     color: var(--main-color);
     background-color: #f2fcf7;
     transition: all 0.5s;
 }
 
-.profile .list_nav i {
+.profile .list_nav_profile i {
     margin-left: 20px;
     color: #a0a3bd;
     width: 30px;
 }
 
-.profile .list_nav a {
+.profile .list_nav_profile a {
     display: block;
     padding: 5px 0;
     color: #1f1f39;
@@ -74,7 +74,7 @@
     color: var(--main-color);
 }
 
-.profile .list_nav span {
+.profile .list_nav_profile span {
 }
 
 /* =========== dashboard =========== */
@@ -236,6 +236,10 @@ tbody .action:hover {
     margin-top: 20px;
 }
 
+.dashboard .text-danger{
+    color: red;
+}
+
 .dashboard .list_input {
     margin-top: 20px;
 }
@@ -249,7 +253,7 @@ tbody .action:hover {
     color: red;
 }
 
-.dashboard .list_input .sub_input input {
+.dashboard .list_input .sub_input input, .list_input select {
     padding: 10px;
     font-family: "Saira Semi Condensed", sans-serif;
     border-radius: 8px;
