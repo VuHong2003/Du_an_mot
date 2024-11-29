@@ -8,12 +8,14 @@ require_once '../models/Settings.php';
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/ProfileController.php';
-$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+require_once '../controllers/client/CartController.php';
+$action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
 $dashboard = new DashboardController();
 $setting = new SettingController();
+$cart = new CartController();
 //========================== CLIENT
 $auth = new authController();
 $home = new HomeController();
@@ -86,6 +88,18 @@ switch ($action) {
         $profile->updateProfile();
         break;
     case 'carts';
-        include '../views/client/carts.php';
+        $cart->index();
+        break;
+    case 'addToCart-byNow';
+        $cart->addToCartOderByNow();
+        break;
+    case 'update-cart';
+        $cart->update();
+        break;
+    case 'delete-cart';
+        $cart->delete();
+        break;
+    case 'checkout';
+        include '../views/client/checkout/checkout.php.php';
         break;
 }

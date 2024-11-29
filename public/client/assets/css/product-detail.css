@@ -21,9 +21,11 @@ main {
 }
 
 .main-image {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 10px;
+  width: 420px;
+  height: 373px;
+  border-radius: 30px;
+  margin: 30px 10px 10px 20px;
+  object-fit: cover;
 }
 
 .thumbnails {
@@ -40,7 +42,7 @@ main {
 
 .product-info {
   background-color: white;
-  /* height: 420px; */
+  height: 420px;
   flex: 1;
   border-radius: 10px;
 }
@@ -74,7 +76,7 @@ h1 {
 .old-price {
   color: #888;
   text-decoration: line-through;
-  margin-right: 10px;
+  margin: 2px 10px 0 0;
 }
 
 .new-price {

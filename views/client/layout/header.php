@@ -98,7 +98,9 @@
                                     <!-- <i class="fa-solid fa-chevron-right"></i> -->
                                 </button>
                             </li>
+
                             <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <nav class="nav_items">

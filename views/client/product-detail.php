@@ -8,92 +8,93 @@
     <div class="product-page">
         <div class="page">
             <div class="product-images">
-                <img src="<?php $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
+                <img src="./images/product/<?= $productDetail['product_image'] ?>" alt="Main Product" class="main-image" />
 
-                <!-- <div class="thumbnails">
-                    <img src="../public/images/product-detail/01.jpg" alt="" />
-                    <img src="../public/images/product-detail/01.jpg" alt="" />
-                    <img src="../public/images/product-detail/01.jpg" alt="" />
-                    <img src="../public/images/product-detail/01.jpg" alt="" />
-
-                </div> -->
             </div>
 
             <!-- Product Info -->
-            <div class="product-info">
-                <div class="info">
-                    <div class="navigation">
-                        <a href="#" class="prev">← Prev Product</a>
-                        <a href="#" class="next">Next Product →</a>
-                    </div>
-                    <h1><?= $productDetail['product_name'] ?></h1>
-                    <p>SKU: 1234567 &nbsp; | &nbsp; BRAND: RADHUNI</p>
-                    <div class="price">
-                        <span
-                            class="old-price"><?= number_format($productDetail['product_price'] * 1000, 0, ',', '.')  ?></span>
-                        <span
-                            class="new-price"><?= number_format($productDetail['product_sale_price'] * 1000, 0, ',', '.') ?></span>
-                        <span class="per-kilo">/Per Kilo</span>
-                    </div>
-
-                    <div class="rating">
-                        <label for="">Weight: </label>
-                        <?php foreach ($productDetail['variants'] as $variant): ?>
-                            <div class="variants">
-                                <button class="variant"><?php $variant['product_variant_weight'] ?></button>
-
-                            </div>
-
-                    </div>
-                    <p class="description">
-                        <?= $productDetail['product_description'] ?>
-                    </p>
-                    <div class="tags">
-                        <label for=""> Total amount:</label>
-                        <span class="total_price">1200</span>
-
-                    </div>
-                <?php endforeach ?>
-                <div class="share">
-                    <label for="">Share:</label>
-                    <ul class="details-share-list">
-                        <li>
-                            <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="actions">
-                    <button class="add-to-cart">
-                        <div class="carts">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            <div class="cart">ADD TO CART</div>
+            <form action="?act=addToCart-byNow" method="post">
+                <div class="product-info">
+                    <input type="hidden" name="product_id" value="<?= $productDetail['product_id'] ?>">
+                    <div class="info">
+                        <div class="navigation">
+                            <a href="#" class="prev">← Prev Product</a>
+                            <a href="#" class="next">Next Product →</a>
                         </div>
-                    </button>
-                    <div class="wish-shuffle">
-                        <button class="add-to-wish">
-                            <i class="fa-solid fa-heart"></i>
-                            <div class="wish">ADD TO WISH</div>
-                        </button>
-                        <button class="compares">
-                            <i class="fa-solid fa-shuffle"></i>
-                            <div class="compare">COMPARE THIS</div>
-                        </button>
+                        <h1><?= $productDetail['product_name'] ?></h1>
+                        <p>SKU: 1234567 &nbsp; | &nbsp; BRAND: RADHUNI</p>
+                        <div class="price">
+                            <span
+                                class="old-price price"><?= number_format($productDetail['product_price'] * 1000, 0, ',', '.')  ?>đ</span>
+                            <span
+                                class="new-price sale-price-variants"><?= number_format($productDetail['product_sale_price'], 0, ',', '.') ?></span><span class="new-price">đ</span>
+                            <input type="hidden" name="variant_id" id="variant_id">
+                            <span class="per-kilo">/Per Kilo</span>
+                        </div>
+                        <!--  -->
+                        <div class="rating">
+                            <label for="">Weight: </label>
+                            <?php foreach ($productDetail['variants'] as $variant) : ?>
+                                <div class="variants">
+                                    <button class="variant btn-weight" data-weight="<?= $variant['product_variant_weight'] ?>"><?= $variant['product_variant_weight'] ?></button>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                        <p class="description">Mô tả:
+                            <?= $productDetail['product_description'] ?>
+                        </p>
+                        <div class="border_action">
+                            <button class="btn_action decrease"><i class="fa-solid fa-circle-minus"></i></button>
+                            <!-- <span name='quantity' class="quantity">1</span> -->
+                            <input type="number" name='quantity'>
+                            <button class="btn_action increase"><i class="fa-solid fa-circle-plus"></i></button>
+                        </div>
+                        <!-- <div class="tags">
+                            <label for=""> Total amount:</label>
+                            <span class="total_price sale-price-variants">1200</span>
+
+                        </div> -->
+                        <div class="share">
+                            <label for="">Share:</label>
+                            <ul class="details-share-list">
+                                <li>
+                                    <a href="#" class="icofont-facebook"><i class="fa-brands fa-facebook"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-twitter"><i class="fa-brands fa-twitter"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="icofont-instagram"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="actions">
+                            <button type="submit" name="add_to_cart" class="add-to-cart">
+                                <div class="carts">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <div class="cart">ADD TO CART</div>
+                                </div>
+                            </button>
+                            <div class="wish-shuffle">
+                                <button class="add-to-wish">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <div class="wish">ADD TO WISH</div>
+                                </button>
+                                <button class="compares">
+                                    <i class="fa-solid fa-shuffle"></i>
+                                    <div class="compare">COMPARE THIS</div>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="containers">
@@ -354,4 +355,64 @@
             </div>
         </div>
     </section>
-</main><?php include '../views/client/layout/footer.php'; ?>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        let selectedWeight = null;
+        const variants = <?= json_encode($productDetail['variants']) ?>;
+        const weightButtons = document.querySelectorAll('.btn-weight');
+        console.log(weightButtons);
+
+        weightButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                selectedWeight = this.getAttribute('data-weight');
+                console.log(selectedWeight);
+
+                checkPrice();
+            })
+        })
+
+        function checkPrice() {
+            if (selectedWeight) {
+                const matchedVariant = variants.find(variant =>
+                    variant.product_variant_weight === selectedWeight
+                );
+                if (matchedVariant) {
+                    const priceElement = document.querySelector('.price-variants');
+                    const salePriceElement = document.querySelector('.sale-price-variants');
+                    const variantIdElement = document.getElementById('variant_id');
+
+                    if (priceElement) {
+                        priceElement.textContent = matchedVariant.price;
+                    }
+                    if (salePriceElement) {
+                        salePriceElement.textContent = matchedVariant.variant_sale_price;
+                    }
+                    if (variantIdElement) {
+                        variantIdElement.value = matchedVariant.product_variant_id;
+                    }
+                } else {
+                    const priceElement = document.querySelector('.price-variants');
+                    const salePriceElement = document.querySelector('.sale-price-variants');
+                    const variantIdElement = document.getElementById('variant_id');
+
+                    if (priceElement) {
+                        priceElement.textContent = '';
+                    }
+                    if (salePriceElement) {
+                        salePriceElement.textContent = '';
+                    }
+                    if (variantIdElement) {
+                        variantIdElement.value = '';
+                    }
+                }
+            }
+        }
+
+
+    });
+</script>
+
+<?php include '../views/client/layout/footer.php'; ?>
