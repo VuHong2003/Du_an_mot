@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="<?=$GLOBALS['settings']["1"]["content"]?>">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,9 +31,9 @@
                 </a>
             </div>
             <div class="box_search">
-                <form action="">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="search" placeholder="Search...">
+                <form action="index.php?act=client" method="post">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="search" placeholder="Tìm kiếm sản phẩm..." name="kyw">
                 </form>
             </div>
             <div class="group_items">
@@ -96,7 +98,9 @@
                                     <!-- <i class="fa-solid fa-chevron-right"></i> -->
                                 </button>
                             </li>
-                            <?php endforeach ?>
+
+                            <?php endforeach; ?>
+
                         </ul>
                     </div>
                     <nav class="nav_items">

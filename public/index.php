@@ -2,6 +2,9 @@
 session_start();
 require_once '../controllers/admin/CategoryController.php';
 require_once '../controllers/admin/ProductController.php';
+require_once '../controllers/admin/DashboardController.php';
+require_once '../controllers/admin/SettingController.php';
+require_once '../models/Settings.php';
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/ProfileController.php';
@@ -10,13 +13,15 @@ $action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
+$dashboard = new DashboardController();
+$setting = new SettingController();
 $cart = new CartController();
 //========================== CLIENT
 $auth = new authController();
 $home = new HomeController();
 switch ($action) {
     case 'admin':
-        include '../views/admin/index.php';
+        $dashboard->index();
         break;
     case 'product':
         $productAdmin->index();
@@ -51,6 +56,10 @@ switch ($action) {
     case 'category-delete':
         $categoryAdmin->deleteCategory($_GET['id']);
         break;
+    case 'setting':
+        $setting->index();
+        break;
+
         // ======================== CLIENT ===========================
 
     case 'client':
@@ -73,12 +82,10 @@ switch ($action) {
         break;
         // ======================== USER ===========================
     case 'profile';
-       
         include '../views/client/user/dashboard.php';
         break;
     case 'update-profile';
         $profile->updateProfile();
-        include '../views/client/user/account.php';
         break;
     case 'carts';
         $cart->index();
