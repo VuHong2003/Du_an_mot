@@ -12,6 +12,7 @@ $categoryAdmin = new CategoryController();
 $userAdmin = new UserController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
+
 //========================== CLIENT
 $auth = new authController();
 $home = new HomeController();
@@ -54,6 +55,15 @@ switch ($action) {
         break;
     case 'users':
         $userAdmin->index();
+        break;
+    case 'user-create':
+        $userAdmin->addUser();
+        break;
+    case 'create':
+        $userAdmin->createUser();
+        break;
+    case 'user-edit':
+        $userAdmin->updateUser();
         break;
 
         // ======================== CLIENT ===========================
