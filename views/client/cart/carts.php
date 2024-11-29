@@ -14,66 +14,54 @@
                 </div>
             </div>
             <div class="box_cart center w d-flex">
-                <div class="cart_left">
-                    <div>
-                        <ul>
-                            <li class="items_prd ">
-                                <img src="../public/images/product/02.jpg" alt="" class="products_img">
-                                <div class="information_cart">
-                                    <div class="box_ifm">
-                                        <h3 class="capitalize">Apple Golden Delicious large size (Green Apple)</h3>
-                                        <p class="capitalize ">4 kilogram</p>
-                                        <p>
-                                            <span class="price fz-20">$120.00</span>
-                                            <del class="line-through fz-16">$150.00</del>
-                                        </p>
-                                    </div>
-                                    <div class="action flex">
-                                        <div>
-                                            <div class="border_action">
-                                                <button class="btn_action decrease"><i class="fa-solid fa-circle-minus"></i></button>
-                                                <span class="quantity">1</span>
-                                                <button class="btn_action increase"><i class="fa-solid fa-circle-plus"></i></button>
+                <form action="?act=update-cart" method="post">
+                    <div class="cart_left">
+                        <div>
+                            <ul>
+                                <?php foreach ($carts as $cart) : ?>
+                                    <li class="items_prd ">
+                                        <img src="./images/product/<?= $cart['product_image'] ?>" alt="" class="products_img">
+                                        <div class="information_cart">
+                                            <div class="box_ifm">
+                                                <h3 class="capitalize"><?= $cart['product_name'] ?></h3>
+                                                <p class="capitalize "><?= $cart['variant_weight_name'] ?></p>
+                                                <p>
+                                                    <span class="price fz-20"><?= number_format($cart['variant_sale_price'] * 1000) ?>đ</span>
+                                                    <del class="line-through fz-16"><?= number_format($cart['variant_price'] * 1000) ?>đ</del>
+                                                </p>
+                                            </div>
+                                            <div class="action flex">
+                                                <div>
+                                                    <div class="border_action">
+                                                        <a class="btn_action decrease"><i class="fa-solid fa-circle-minus"></i></a>
+                                                        <input type="number" name="quantity[<?= $cart['cart_id'] ?>]" value="<?= $cart['quantity'] ?>" class="quantity" min="1">
+                                                        <a class="btn_action increase"><i class="fa-solid fa-circle-plus"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="flex">
+                                                    <div>
+                                                        <button type="submit" name="update_cart" class="btn_remove capitalize">
+                                                            <i class="fa-regular fa-trash-can"></i> Update
+                                                        </button>
+                                                    </div>
+                                                    <div>
+                                                        <a href="?act=delete-cart&cart_id=<?= $cart['cart_id'] ?>" onclick="return confirm('Bạn có muốn xóa sản phẩm này?')" class="btn_remove capitalize">
+                                                            <i class="fa-regular fa-trash-can"></i> xóa
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button class="btn_remove capitalize">
-                                            <i class="fa-regular fa-trash-can"></i> xóa
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="items_prd ">
-                                <img src="../public/images/product/02.jpg" alt="" class="products_img">
-                                <div class="information_cart">
-                                    <div class="box_ifm">
-                                        <h3 class="capitalize">Apple Golden Delicious large size (Green Apple)</h3>
-                                        <p class="capitalize ">4 kilogram</p>
-                                        <p>
-                                            <span class="price fz-20">$120.00</span>
-                                            <del class="line-through fz-16">$150.00</del>
-                                        </p>
-                                    </div>
-                                    <div class="action flex">
-                                        <div>
-                                            <div class="border_action">
-                                                <button class="btn_action decrease"><i class="fa-solid fa-circle-minus"></i></button>
-                                                <span class="quantity">1</span>
-                                                <button class="btn_action increase"><i class="fa-solid fa-circle-plus"></i></button>
-                                            </div>
-                                        </div>
-                                        <button class="btn_remove capitalize">
-                                            <i class="fa-regular fa-trash-can"></i> xóa
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="text-right capitalize">
-                            <a href="" class="next_checkout">Tiến hành thanh toán</a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                            <div class="text-right capitalize">
+                                <a href="" class="next_checkout">Tiến hành thanh toán</a>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
+                </form>
                 <div class="cart_right">
                     <form action="" class="form_coupon ">
                         <input type="text" placeholder="Nhập mã giảm giá">
@@ -85,7 +73,7 @@
                     <ul class="list_amount">
                         <li class="flex">
                             <span class="capitalize">Tổng cộng</span>
-                            <span class="font-medium">$500.00</span>
+                            <span class="font-medium"><?= number_format($sum * 1000) ?>đ</span>
                         </li>
                         <li class="flex">
                             <span class="capitalize">Phí vận chuyển</span>
@@ -98,7 +86,7 @@
                     </ul>
                     <div class="flex">
                         <p class="capitalize font-semibold">Tổng cộng</p>
-                        <p class="font-semibold">$535.80</p>
+                        <p class="font-semibold"><?= number_format($sum * 1000) ?>đ</p>
                     </div>
                 </div>
             </div>
