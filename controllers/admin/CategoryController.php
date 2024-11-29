@@ -99,7 +99,7 @@ class CategoryController extends Category
         try {
             $this->delete($_GET['id']);
             $_SESSION['success'] = 'Xóa danh mục thành công';
-            header('Location: index.php?act=category');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
             exit();
         } catch (\Throwable $th) {
             $_SESSION['error'] = 'Xóa danh mục thất bại. Vui lòng thử lại';

@@ -3,22 +3,27 @@ session_start();
 require_once '../controllers/admin/CategoryController.php';
 require_once '../controllers/admin/ProductController.php';
 require_once '../controllers/admin/UserController.php';
-
+require_once '../controllers/admin/DashboardController.php';
+require_once '../controllers/admin/SettingController.php';
+require_once '../models/Settings.php';
 require_once '../controllers/client/HomeController.php';
 require_once '../controllers/client/AuthController.php';
 require_once '../controllers/client/ProfileController.php';
-$action = isset($_GET['act']) ? $_GET['act'] : 'admin';
+require_once '../controllers/client/CartController.php';
+$action = isset($_GET['act']) ? $_GET['act'] : 'client';
 $categoryAdmin = new CategoryController();
 $userAdmin = new UserController();
 $productAdmin = new ProductController();
 $profile = new ProfileController();
-
+$dashboard = new DashboardController();
+$setting = new SettingController();
+$cart = new CartController();
 //========================== CLIENT
 $auth = new authController();
 $home = new HomeController();
 switch ($action) {
     case 'admin':
-        include '../views/admin/index.php';
+        $dashboard->index();
         break;
     case 'product':
         $productAdmin->index();
@@ -64,6 +69,8 @@ switch ($action) {
         break;
     case 'user-edit':
         $userAdmin->updateUser();
+    case 'setting':
+        $setting->index();
         break;
 
         // ======================== CLIENT ===========================
@@ -88,14 +95,30 @@ switch ($action) {
         break;
         // ======================== USER ===========================
     case 'profile';
-
         include '../views/client/user/dashboard.php';
         break;
     case 'update-profile';
         $profile->updateProfile();
-        include '../views/client/user/account.php';
+        break;
+    case 'update-password';
+        $profile->updatePassProfile();
+        break;
+    case 'logout';
+        $profile->logout();
         break;
     case 'carts';
-        include '../views/client/carts.php';
+        $cart->index();
+        break;
+    case 'addToCart-byNow';
+        $cart->addToCartOderByNow();
+        break;
+    case 'update-cart';
+        $cart->update();
+        break;
+    case 'delete-cart';
+        $cart->delete();
+        break;
+    case 'checkout';
+        include '../views/client/checkout/checkout.php.php';
         break;
 }

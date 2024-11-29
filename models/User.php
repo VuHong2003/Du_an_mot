@@ -23,17 +23,25 @@ class User extends connect {
         return false;
     }
 
-    public function updateUser($name,$address, $email, $phone, $gender){
-        $sql = 'UPDATE users SET name=?, address=?, email=?, phone=?, gender=? WHERE id=?';
+    public function updateUser($name, $image,$address, $email, $phone, $gender){
+        $sql = 'UPDATE users SET name=?, avatar=?, address=?, email=?, phone=?, gender=? WHERE id=?';
         $stmt = $this->connect()->prepare($sql);
-        return $stmt->execute([$name,$address, $email, $phone, $gender, $_SESSION['user']['id']]);
+        return $stmt->execute([$name, $image,$address, $email, $phone, $gender, $_SESSION['user']['id']]);
     }
 
+    public function updatePassUser($newPassword){
+        $hash_password = password_hash($newPassword, PASSWORD_DEFAULT);
+        echo $sql = 'UPDATE users SET password=?  WHERE id=?';
+        $stmt = $this->connect()->prepare($sql);
+        return $stmt->execute([$hash_password, $_SESSION['user']['id']]);
+    }
+    
     public function getUserById($id){
         $sql = 'SELECT * FROM users WHERE id=?';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
+
 }
 ?>

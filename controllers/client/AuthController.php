@@ -1,9 +1,20 @@
 <?php
 require_once '../models/User.php';
-class authController extends User {
-    
-    
-    public function registers() {
+require_once '../models/Category.php';
+require_once '../models/Settings.php';
+class authController extends User
+{
+    protected $categories;
+    protected $setting;
+    public function __construct()
+    {
+        $this->categories   = new Category();
+        $this->setting      = new Settings();
+    }
+    public function registers()
+    {
+        $categories = $this->categories->listCategory();
+        $GLOBALS['settings'] = $this->setting->getAllSetting();
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
             $errors = [];
             if (empty($_POST['name'])) {
@@ -17,7 +28,7 @@ class authController extends User {
             }
             if ($_POST['confirm_password'] !== $_POST['password']) {
                 $errors['confirm_password'] = 'Mật khẩu nhập lại không khớp';
-            }else if(empty($_POST['email'])){
+            } else if (empty($_POST['email'])) {
                 $errors['confirm_password'] = 'Vui lòng nhập lại mật khẩu';
             }
 
@@ -29,13 +40,13 @@ class authController extends User {
             }
 
             $register = $this->register($_POST['name'], $_POST['email'], $_POST['password']);
-            if($register){
+            if ($register) {
                 $_SESSION['success'] = 'Tạo tài khoản thành công. Vui lòng đăng nhập';
                 header('Location: ?act=login');
                 exit();
-            }else{
+            } else {
                 $_SESSION['error'] = 'Tạo tài khoản không thành công. Vui lòng thử lại';
-                header('Location: '.$_SERVER['HTTP_REFERER']);
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit();
             }
 
@@ -60,8 +71,11 @@ class authController extends User {
         include '../views/client/auth/register.php';
     }
 
-   
-    public function signins() {
+
+    public function signins()
+    {
+        $categories = $this->categories->listCategory();
+        $GLOBALS['settings'] = $this->setting->getAllSetting();
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             $errors = [];
 
@@ -80,18 +94,18 @@ class authController extends User {
             }
 
             $login = $this->signin($_POST['email'], $_POST['password']);
-            if($login){
+            if ($login) {
                 $_SESSION['user'] = $login; // Lưu thông tin người dùng đăng nhập vào session
                 $_SESSION['success'] = 'Đăng nhập thành công';
                 header('Location: ?act=client');
                 exit();
-            }else{
+            } else {
                 $_SESSION['error'] = 'Đăng nhập không thành công. Vui lòng thử lại';
-                header('Location: '.$_SERVER['HTTP_REFERER']);
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit();
             }
             // if ($login) {
-               
+
             //     $_SESSION['user'] = [
             //         'id' => $login['id'],
             //         'name' => $login['name'],
@@ -107,4 +121,3 @@ class authController extends User {
         include '../views/client/auth/login.php';
     }
 }
-?>

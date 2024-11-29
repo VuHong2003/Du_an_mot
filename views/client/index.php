@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="client/assets/css/home.css">
 
 <body>
+
     <div class="center home">
         <section class="hero_section">
             <div class="img_home_banner">
