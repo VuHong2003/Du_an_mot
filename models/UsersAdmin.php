@@ -18,11 +18,11 @@ class UsersAdmin extends connect
     }
 
 
-    public function create($name, $address, $email, $phone, $password, $role_id)
+    public function create($name,$email, $password, $role_id)
     {
-        $spl = 'INSERT INTO users(name, address, email, phone, password, role_id) VALUES (?, ?, ?, ?, ?, ?)';
+        $spl = 'INSERT INTO users(name, email, password, role_id) VALUES (?, ?, ?, ?)';
         $stmt = $this->connect()->prepare($spl);
-        return $stmt->execute([$name, $address, $email, $phone, $password, $role_id]);
+        return $stmt->execute([$name,$email, $password, $role_id]);
     }
     public function update($name, $address, $email, $phone, $password, $role_id, $id)
     {
@@ -37,5 +37,13 @@ class UsersAdmin extends connect
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$_GET['id']]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    
+    public function checkEmail($email){
+        echo $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]);
+        return $stmt->fetch();
     }
 }

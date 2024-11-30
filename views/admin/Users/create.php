@@ -40,16 +40,6 @@
                             <?php if (isset($_SESSION['errors']['name'])) : ?>
                                 <p class="text-danger"><?= $_SESSION['errors']['name'] ?></p>
                             <?php endif; ?>
-                            <!-- Address -->
-                            <div class="form-group">
-                                <label for="inputName">Địa chỉ khách hàng</label>
-                                <input type="text" name="address" id="inputName" class="form-control"
-                                    placeholder="Nhập địa chỉ khách hàng"
-                                    value="<?= isset($_POST['address']) ? $_POST['address'] : '' ?>">
-                            </div>
-                            <?php if (isset($_SESSION['errors']['address'])) : ?>
-                                <p class="text-danger"><?= $_SESSION['errors']['address'] ?></p>
-                            <?php endif; ?>
                             <!-- Email -->
                             <div class="form-group">
                                 <label for="inputName">Email khách hàng</label>
@@ -59,16 +49,6 @@
                             </div>
                             <?php if (isset($_SESSION['errors']['email'])) : ?>
                                 <p class="text-danger"><?= $_SESSION['errors']['email'] ?></p>
-                            <?php endif; ?>
-                            <!-- Phone -->
-                            <div class="form-group">
-                                <label for="inputName">Số điện thoại khách hàng</label>
-                                <input type="text" name="phone" id="inputName" class="form-control"
-                                    placeholder="Nhập số điện thoại khách hàng"
-                                    value="<?= isset($_POST['phone']) ? $_POST['phone'] : '' ?>">
-                            </div>
-                            <?php if (isset($_SESSION['errors']['phone'])) : ?>
-                                <p class="text-danger"><?= $_SESSION['errors']['phone'] ?></p>
                             <?php endif; ?>
                             <!-- Password -->
                             <div class="form-group">

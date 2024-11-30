@@ -18,12 +18,12 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="index.php?act=user-edit&id=<?= $getUser['id'] ?>" method="post" enctype="multipart/form-data">
+        <form action="index.php?act=user-edit&id=<?= $getUser['id'] ?>" method="post" >
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Users</h3>
+                            <h3 class="card-title">Users <?= $getUser['name'] ?></h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -107,4 +107,6 @@
     </section>
     <!-- /.content -->
 </div>
-<?php include '../views/admin/layout/footer.php'; ?>
+<?php 
+unset($_SESSION['errors']);
+include '../views/admin/layout/footer.php'; ?>

@@ -8,13 +8,13 @@ class UserController extends UsersAdmin
     {
         $listUser = $this->listUser();
         $nameRole = $this->Role();
-        include '../views/admin/Users/list.php';
+        include '../views/admin/users/list.php';
     }
     public function createUser()
     {
         $nameRole = $this->Role();
 
-        include '../views/admin/Users/create.php';
+        include '../views/admin/users/create.php';
     }
 
 
@@ -23,47 +23,41 @@ class UserController extends UsersAdmin
 
     public function addUser()
     {
+        $nameRole = $this->Role();
+        $checkEmail = $this->checkEmail($_POST['email']);
+
+        // var_dump($checkEmail); die();
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['createUser'])) {
             $errors = [];
             if (empty($_POST['name'])) {
                 $errors['name'] = 'Vui lòng nhập họ và tên';
             }
-
-            if (empty($_POST['gender'])) {
-                $errors['gender'] = 'Vui lòng chọn giới tính';
-            }
-            if (empty($_POST['address'])) {
-                $errors['address'] = 'Vui lòng nhập địa chỉ';
+            if($checkEmail){
+                $errors['email'] = 'Email đã tồn tại. Vui lòng nhập địa chỉ email khác';
             }
             if (empty($_POST['email'])) {
                 $errors['email'] = 'Vui lòng nhập email';
             }
-            if (empty($_POST['phone'])) {
-                $errors['phone'] = 'Vui lòng nhập số điện thoại';
-            }
             if (empty($_POST['password'])) {
                 $errors['password'] = 'Vui lòng nhập mật khẩu';
             }
-            if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
-                $errors['avatar'] = 'Vui lòng thêm file hình ảnh';
-            }
-
             $_SESSION['errors'] = $errors;
 
-            // $file = $_FILES['image'];
-            // $image = $file['name'];
-            // if (move_uploaded_file($file['tmp_name'], './images/user/' . $image)) {
-            $createUser = $this->create($_POST['name'],  $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['password'], $_POST['role']);
-
-            if ($createUser) {
-                $_SESSION['success'] = 'Thêm thành viên';
-                header('Location: index.php?act=users');
-                exit();
-            } else {
-                $_SESSION['error'] = 'Thêm thành viên thất bại. Vui lòng thử lại';
-                header('Location' . $_SERVER['HTTP_REFERER']);
-                exit();
+            if(count($errors) == 0) {
+                $createUser = $this->create($_POST['name'],$_POST['email'], $_POST['password'], $_POST['role']);
+                if ($createUser) {
+                    $_SESSION['success'] = 'Thêm thành viên';
+                    header('Location: index.php?act=users');
+                    exit();
+                } else {
+                    $_SESSION['error'] = 'Thêm thành viên thất bại. Vui lòng thử lại';
+                    header('Location' . $_SERVER['HTTP_REFERER']);
+                    exit();
+                }
             }
+            
+
+            
             // }
         }
         include '../views/admin/Users/create.php';
@@ -74,7 +68,7 @@ class UserController extends UsersAdmin
             $getUser = $this->detail();  // Lấy thông tin người dùng theo ID
 
             if ($getUser) {
-                include '../views/admin/Users/edit.php';
+                include '../views/admin/users/edit.php';
             } else {
                 $_SESSION['error'] = 'Không tìm thấy người dùng';
                 header('Location: index.php?act=users');
@@ -96,15 +90,16 @@ class UserController extends UsersAdmin
             if (empty($_POST['name'])) {
                 $errors['name'] = 'Vui lòng nhập họ và tên';
             }
-            if (empty($_POST['gender'])) {
-                $errors['gender'] = 'Vui lòng chọn giới tính';
-            }
             if (empty($_POST['address'])) {
                 $errors['address'] = 'Vui lòng nhập địa chỉ';
             }
-            if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
-                $errors['avatar'] = 'Vui lòng thêm file hình ảnh';
+            if (empty($_POST['password'])) {
+                $errors['password'] = 'Vui lòng nhập mật khẩu';
             }
+            if (empty($_POST['email'])) {
+                $errors['email'] = 'Vui lòng nhập email';
+            }
+            $_SESSION['errors'] = $errors;
             $updateUse = $this->update($_POST['name'],  $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['password'], $_POST['role'], $_GET['id']);
             // var_dump($_POST);
             if ($updateUse) {
@@ -117,9 +112,6 @@ class UserController extends UsersAdmin
                 exit();
             }
         }
-
-
-
-        include '../views/admin/Users/edit.php';
+        include '../views/admin/users/edit.php';
     }
 }

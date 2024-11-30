@@ -31,7 +31,7 @@ class User extends connect {
 
     public function updatePassUser($newPassword){
         $hash_password = password_hash($newPassword, PASSWORD_DEFAULT);
-        echo $sql = 'UPDATE users SET password=?  WHERE id=?';
+        $sql = 'UPDATE users SET password=?  WHERE id=?';
         $stmt = $this->connect()->prepare($sql);
         return $stmt->execute([$hash_password, $_SESSION['user']['id']]);
     }
@@ -42,6 +42,11 @@ class User extends connect {
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
-
+    public function checkEmail($email){
+        $sql = 'SELECT * FROM users WHERE email=? LIMIT 1';
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$email]);
+        return $stmt->fetch();
+    }
 }
 ?>

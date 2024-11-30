@@ -52,10 +52,14 @@
                                             <td><?= $value['id'] ?></td>
                                             <td><?= $value['name'] ?></td>
 
-                                            <td><?= $value['address'] ?></td>
-                                            <td><?= $value['email'] ?></td>
-                                            <td><?= $value['phone'] ?></td>
-                                            <td><?= $value['role_id'] ?></td>
+                                            <td><?= isset($value['address']) && $value['address'] !== ''  ? $value['address'] : "Chưa cập nhật địa chỉ" ?></td>
+                                            <td><i class="fa-solid fa-envelope"></i> <?= $value['email'] ?></td>
+                                            <td><?= isset($value['phone']) && $value['phone'] !== ''  ? $value['phone'] : "Chưa cập nhật số điện thoại" ?></td>
+                                            <td><?php if($value['role_id'] == 3){
+                                                echo '<button type="button" class="btn btn-danger btn-sm">Admin</button>';
+                                            }else{
+                                                echo '<button type="button" class="btn btn-primary btn-sm">Member</button>';
+                                            } ?></td>
 
                                             <td>
                                                 <a title=" Chỉnh sửa" href="index.php?act=user-edit&id=<?= $value['id'] ?>">
